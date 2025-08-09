@@ -1,103 +1,162 @@
 # 📅 Session 7 — 21 Jun 2025
 
-149. `netstat -tulpn`
-     Show listening TCP/UDP sockets with program names (numeric addrs). Flags: -t TCP, -u UDP, -l listening, -p program, -n numeric.
+## 🖥️ Commands Learned
 
-150. `netstat -tulp`
-     Same as above but resolve names (no -n).
+### 1. Show listening TCP/UDP sockets with program names
 
-151. `netstat -tulpn`
-     Repeat listening sockets (numeric).
+```bash
+netstat -tulpn
+```
 
-152. `date`
-     Show current system time.
+Shows listening TCP/UDP sockets with program names and numeric addresses.  
+Flags: `-t` TCP, `-u` UDP, `-l` listening, `-p` program, `-n` numeric.
 
-153. `hwclock`
-     Show hardware (RTC) clock.
+### 2. Show listening sockets (resolve names)
 
-154. `date`
-     Show system time again.
+```bash
+netstat -tulp
+```
 
-155. `date -s "Sat Jun 21 10:40:59 PM PKT 2025"`
-     Set system time. Requires root.
+Same as above but resolves names (no `-n`).
 
-156. `date`
-     Verify system time.
+### 3. Repeat listening sockets (numeric)
 
-157. `hwclock`
-     Read hardware clock.
+```bash
+netstat -tulpn
+```
 
-158. `hwclock --hctosys`
-     Set system clock from hardware clock.
+Repeat: shows listening sockets with numeric addresses.
 
-159. `date`
-     Verify after sync.
+### 4. Show current system time
 
-160. `hwclock`
-     Verify hardware time.
+```bash
+date
+```
 
-161. `date -s "Sat Jun 21 10:40:59 PM PKT 2025"`
-     Set system time again.
+Displays the current system time.
 
-162. `date`
-     Verify.
+### 5. Show hardware (RTC) clock
 
-163. `hwclock`
-     Read hardware time.
+```bash
+hwclock
+```
 
-164. `hwclock --systohc`
-     Set hardware clock from system time.
+Displays the hardware (RTC) clock time.
 
-165. `hwclock`
-     Verify.
+### 6. Set system time
 
-166. `date`
-     Verify system time.
+```bash
+date -s "Sat Jun 21 10:40:59 PM PKT 2025"
+```
 
-167. `date -s "Sat Jun 21 08:46:59 PM PKT 2025"`
-     Adjust system time.
+Sets the system time. Requires root privileges.
 
-168. `hwclock`
-     Read hardware clock.
+### 7. Sync system clock from hardware clock
 
-169. `hwclock --systohc`
-     Sync hardware clock to system time.
+```bash
+hwclock --hctosys
+```
 
-170. `date`
-     Verify final time.
+Sets the system clock from the hardware clock.
 
-171. `hwclock`
-     Verify final hardware time.
+### 8. Sync hardware clock from system time
 
-172. `nano file_23`
-     Open/create file in nano. Tip: Save Ctrl+O, Exit Ctrl+X.
+```bash
+hwclock --systohc
+```
 
-173. `cat file_23`
-     View contents.
+Sets the hardware clock from the current system time.
 
-174. `nano file_23`
-     Edit again.
+### 9. Open or create a file in nano
 
-175. `vim file_24`
-     Open in Vim. Tip: i insert, Esc, \:wq save+quit.
+```bash
+nano file_23
+```
 
-176. `cat file_24`
-     View contents.
+Opens or creates `file_23` in the nano editor.  
+Tip: Save with `Ctrl+O`, exit with `Ctrl+X`.
 
-177. `nano file_24`
-     Edit in nano.
+### 10. View file contents
 
-178. `vi file_24`
-     Open in vi (Vim-compatible).
+```bash
+cat file_23
+```
 
-179. `vi file_24`
-     Open again.
+Displays the contents of `file_23`.
 
-180. `vimtutor`
-     Launch Vim tutorial (interactive).
+### 11. Edit file again in nano
 
-181. `vim file1`
-     Create/edit file1 in Vim.
+```bash
+nano file_23
+```
 
-182. `vimtutor`
-     Launch tutor again for practice.
+Reopens `file_23` in nano for editing.
+
+### 12. Open file in Vim
+
+```bash
+vim file_24
+```
+
+Opens `file_24` in Vim.  
+Tip: Press `i` to insert, `Esc`, then `:wq` to save and quit.
+
+### 13. View contents of file_24
+
+```bash
+cat file_24
+```
+
+Displays the contents of `file_24`.
+
+### 14. Edit file_24 in nano
+
+```bash
+nano file_24
+```
+
+Edits `file_24` in nano.
+
+### 15. Open file_24 in vi
+
+```bash
+vi file_24
+```
+
+Opens `file_24` in vi (Vim-compatible).
+
+### 16. Open file_24 in vi again
+
+```bash
+vi file_24
+```
+
+Repeat: opens `file_24` in vi.
+
+### 17. Launch Vim tutorial
+
+```bash
+vimtutor
+```
+
+Starts the interactive Vim tutorial.
+
+### 18. Create/edit file1 in Vim
+
+```bash
+vim file1
+```
+
+Creates or edits `file1` in Vim.
+
+### 19. Launch Vim tutor again
+
+```bash
+vimtutor
+```
+
+Repeat: launches the Vim tutorial for more practice.
+
+---
+
+*End of Session 7 — 21 Jun 2025*

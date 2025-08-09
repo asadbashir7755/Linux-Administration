@@ -1,261 +1,281 @@
-
 # 📅 Session 11 — 19 Jul 2025 • Archiving & Compression Completed
 
-233. `vi data/19_july`
-      Create/edit a file within data.
+## 🖥️ Commands Learned
 
-234. `ls`
-      List.
+### 1. Create/edit a file within data
 
-235. `cat data/19_july`
-      View file contents.
+```bash
+vi data/19_july
+```
 
-236. `tar -rvf archive.tar data/19_july`
-      Append file to existing archive.
+Creates or edits a file named `19_july` inside the `data` directory.
 
-237. `ls`
-      List.
+### 2. List directory
 
-238. `tar -tvf archive.tar`
-      List contents of tar file.
+```bash
+ls
+```
 
-239. `vi data/19_july`
-      Edit file again.
+Lists files in the current directory.
 
-240. `rm data/ -rf`
-      Remove directory with flags after path (works but nonstandard order).
-      Note: Safer form is `rm -rf data/`.
+### 3. View file contents
 
-241. `tar -uvf archive.tar data/19_july`
-      Update entry if the file is newer.
+```bash
+cat data/19_july
+```
 
-242. `tar -xvf archive.tar`
-      Extract archive.
+Displays the contents of `data/19_july`.
 
-243. `ls data/`
-      Check extracted files.
+### 4. Append file to existing archive
 
-244. `cat data/19_july`
-      View updated content.
+```bash
+tar -rvf archive.tar data/19_july
+```
 
-245. `tar -tvf archive.tar`
-      Verify archive entries.
+Appends `data/19_july` to the existing `archive.tar`.
 
-246. `tar --delete -f archive.tar data/19_july`
-      Delete specific member from archive.
-      Note: Supported with non-compressed tar files.
+### 5. List contents of tar file
 
-247. `tar -tvf archive.tar`
-      Verify deletion.
+```bash
+tar -tvf archive.tar
+```
 
-248. `ls`
-      List.
+Lists the contents of `archive.tar`.
 
-249. `zip -r data.zip data/`
-      Create recursive zip archive.
+### 6. Edit file again
 
-250. `ls data -lh`
-      List contents of data.
+```bash
+vi data/19_july
+```
 
-251. `du -hs data`
-      Size of data directory.
+Edits `data/19_july` again.
 
-252. `du -hs data.zip`
-      Size of zip archive.
+### 7. Remove directory (nonstandard order)
 
-253. `ls -lh`
-      List with sizes.
+```bash
+rm data/ -rf
+```
 
-254. `rm -rf data`
-      Remove data directory.
+Removes the `data` directory. (Standard: `rm -rf data/`)
 
-255. `ls`
-      List.
+### 8. Update entry in archive if file is newer
 
-256. `ll`
-      Long list.
+```bash
+tar -uvf archive.tar data/19_july
+```
 
-257. `ls -lh`
-      Long list.
+Updates the archive entry if the file is newer.
 
-258. `unzip data.zip`
-      Extract zip archive.
+### 9. Extract archive
 
-259. `ls`
-      List.
+```bash
+tar -xvf archive.tar
+```
 
-260. `du -hs data`
-      Check size after unzip.
+Extracts the contents of `archive.tar`.
 
-261. `ls`
-      List.
+### 10. Check extracted files
 
-262. `gzip compressed.gz data`
-      Incorrect syntax for gzip (expects file(s) to compress).
-      Note: To create a .gz with a specific name, use `gzip -c datafile > compressed.gz` or tar+gzip.
+```bash
+ls data/
+```
 
-263. `gzip archive.tar.gz archive.tar`
-      Also incorrect: gzip doesn’t take output then input.
-      Note: Correct: `gzip archive.tar` produces `archive.tar.gz`.
+Lists files in the extracted `data` directory.
 
-264. `gzip archive.tar`
-      Correctly compress archive.tar to archive.tar.gz (replaces original).
+### 11. View updated content
 
-265. `ls`
-      List.
+```bash
+cat data/19_july
+```
 
-266. `ls -lh`
-      Verify sizes.
+Displays updated content of `data/19_july`.
 
-267. `gzip archive.tar`
-      Attempt to gzip again; if already .gz, it won’t find archive.tar.
-      Note: Will error if archive.tar no longer exists.
+### 12. Verify archive entries
 
-268. `ls`
-      List.
+```bash
+tar -tvf archive.tar
+```
 
-269. `gzip archive.tar`
-      Repeated attempt; same note as above.
+Lists entries in the archive to verify.
 
-270. `ls`
-      List.
+### 13. Delete specific member from archive
 
-271. `ls -lh`
-      Long list.
+```bash
+tar --delete -f archive.tar data/19_july
+```
 
-272. `rm -rf data`
-      Remove data dir again (if present).
+Deletes `data/19_july` from the archive (supported for non-compressed tar files).
 
-273. `ls`
-      List.
+### 14. Verify deletion
 
-274. `ll`
-      Long list.
+```bash
+tar -tvf archive.tar
+```
 
-275. `gunzip archive.tar.gz`
-      Decompress back to archive.tar.
+Verifies that the file was deleted from the archive.
 
-276. `ls`
-      List.
+### 15. Create recursive zip archive
 
-277. `ll`
-      Long list.
+```bash
+zip -r data.zip data/
+```
 
-278. `tar -xvf archive.tar`
-      Extract tar again.
+Creates a zip archive of the `data` directory.
 
-279. `ls`
-      List.
+### 16. List contents of data
 
-280. `ll`
-      Long list.
+```bash
+ls data -lh
+```
 
-281. `du -sh data`
-      Human-readable size of data.
+Lists contents of `data` with human-readable sizes.
 
-282. `ls`
-      List.
+### 17. Size of data directory
 
-283. `gzip archive.tar`
-      Compress archive again to .gz.
+```bash
+du -hs data
+```
 
-284. `ls -lh`
-      Check sizes.
+Shows the size of the `data` directory.
 
-285. `ls`
-      List.
+### 18. Size of zip archive
 
-286. `tar -cvf archive.tar data`
-      Recreate tar from data (overwrites if exists).
+```bash
+du -hs data.zip
+```
 
-287. `ll`
-      Long list.
+Shows the size of the `data.zip` archive.
 
-288. `ls -lh`
-      Long list.
+### 19. List with sizes
 
-289. `bzip2 archive.tar`
-      Compress tar with bzip2 → archive.tar.bz2.
+```bash
+ls -lh
+```
 
-290. `ls -lh`
-      Verify file size.
+Lists files with human-readable sizes.
 
-291. `rm -rf data`
-      Remove data.
+### 20. Remove data directory
 
-292. `ll`
-      Long list.
+```bash
+rm -rf data
+```
 
-293. `ls -lh`
-      Long list.
+Removes the `data` directory.
 
-294. `bunzip2 archive.tar.bz2`
-      Decompress bzip2 archive to archive.tar.
+### 21. Long list
 
-295. `ls -lh`
-      Verify.
+```bash
+ll
+```
 
-296. `tar -xvf archive.tar`
-      Extract again.
+Long listing of files (alias for `ls -l`).
 
-297. `ls`
-      List.
+### 22. Extract zip archive
 
-298. `ls data -lh`
-      Inspect data.
+```bash
+unzip data.zip
+```
 
-299. `ls`
-      List.
+Extracts the contents of `data.zip`.
 
-300. `ll`
-      Long list.
+### 23. Check size after unzip
 
-301. `bzip2 archive.tar`
-      Recompress to .bz2.
+```bash
+du -hs data
+```
 
-302. `ls -lh`
-      Verify.
+Shows the size of the extracted `data` directory.
 
-303. `tar -czvf compressed.tgz data`
-      Create gzip-compressed tar (tgz).
+### 24. Compress archive.tar to archive.tar.gz
 
-304. `ls -lh`
-      Verify.
+```bash
+gzip archive.tar
+```
 
-305. `tar -cjvf compressed.tbz2 data`
-      Create bzip2-compressed tar (tbz2).
+Compresses `archive.tar` to `archive.tar.gz` (replaces original).
 
-306. `ls -lh`
-      Verify.
+### 25. Decompress archive.tar.gz
 
-307. `rm -rf data`
-      Remove data directory.
+```bash
+gunzip archive.tar.gz
+```
 
-308. `ls -lh`
-      Long list.
+Decompresses `archive.tar.gz` back to `archive.tar`.
 
-309. `tar -xzvf compressed.tgz`
-      Extract gzipped tar.
+### 26. Extract tar again
 
-310. `ls`
-      List.
+```bash
+tar -xvf archive.tar
+```
 
-311. `ll`
-      Long list.
+Extracts the tar archive.
 
-312. `rm -rf data`
-      Remove extracted data.
+### 27. Human-readable size of data
 
-313. `ll`
-      Long list.
+```bash
+du -sh data
+```
 
-314. `tar -xjvf compressed.tbz2`
-      Extract bzip2 tar.
+Shows the size of the `data` directory in human-readable format.
 
-315. `ls -lh`
-      Verify.
+### 28. Compress tar with bzip2
 
-316. `du -hs data`
-      Size of extracted data.
+```bash
+bzip2 archive.tar
+```
+
+Compresses `archive.tar` to `archive.tar.bz2`.
+
+### 29. Decompress bzip2 archive
+
+```bash
+bunzip2 archive.tar.bz2
+```
+
+Decompresses `archive.tar.bz2` back to `archive.tar`.
+
+### 30. Create gzip-compressed tar (tgz)
+
+```bash
+tar -czvf compressed.tgz data
+```
+
+Creates a gzip-compressed tar archive (`.tgz`).
+
+### 31. Create bzip2-compressed tar (tbz2)
+
+```bash
+tar -cjvf compressed.tbz2 data
+```
+
+Creates a bzip2-compressed tar archive (`.tbz2`).
+
+### 32. Extract gzipped tar
+
+```bash
+tar -xzvf compressed.tgz
+```
+
+Extracts the gzip-compressed tar archive.
+
+### 33. Extract bzip2 tar
+
+```bash
+tar -xjvf compressed.tbz2
+```
+
+Extracts the bzip2-compressed tar archive.
+
+### 34. Size of extracted data
+
+```bash
+du -hs data
+```
+
+Shows the size of the extracted `data` directory.
+
+---
+
+*End of Session 11 — 19 Jul 2025*
 
 

@@ -1,279 +1,633 @@
 # 📅 Session 14 — 2 Aug 2025 • User and Group Management
 
-354. `useradd -s /usr/bin/false umair`
-      Create user *umair* with shell disabled to prevent login.
+## 🖥️ Commands Learned
 
-355. `passwd umair`
-      Assign password to *umair*.
+### 1. Create user with shell disabled
 
-356. `tail -2 /etc/passwd`
-      Display last two user entries in passwd file.
+```bash
+useradd -s /usr/bin/false umair
+```
 
-357. `su umair`
-      Attempt to switch to user *umair* (will fail due to false shell).
+Creates user `umair` with shell disabled to prevent login.
 
-358. `usermod -s /bin/bash umair`
-      Change *umair*’s shell to `/bin/bash` to allow login.
+### 2. Assign password to user
 
-359. `tail -2 /etc/passwd`
-      Verify shell change for *umair*.
+```bash
+passwd umair
+```
 
-360. `su umair`
-      Login as *umair*.
+Sets password for `umair`.
 
-361. `usermod -s /usr/sbin/nologin umair`
-      Change shell again to disallow interactive login.
+### 3. Display last two user entries
 
-362. `tail -2 /etc/passwd`
-      Confirm updated shell entry.
+```bash
+tail -2 /etc/passwd
+```
 
-363. `su umair`
-      Login fails due to nologin shell.
+Shows the last two entries in the passwd file.
 
-364. `useradd -u 1010 -g 1010 salman`
-      Create user *salman* with specific UID and GID.
+### 4. Attempt to switch to user (login will fail)
 
-365. `useradd -u 1010 -g 1004 salman`
-      Attempt to reassign *salman* to different GID (fails if user exists).
+```bash
+su umair
+```
 
-366. `tail -3 /etc/passwd`
-      Check latest user additions.
+Attempts to switch to `umair` (will fail due to false shell).
 
-367. `useradd -c "Zahid Ali" zahid`
-      Create *zahid* with a custom comment field.
+### 5. Change user shell to allow login
 
-368. `passwd zahid`
-      Set password for *zahid*.
+```bash
+usermod -s /bin/bash umair
+```
 
-369. `tail -4 /etc/passwd`
-      Display recent user entries.
+Changes `umair`'s shell to `/bin/bash` to allow login.
 
-370. `usermod -c "Salman Khan" salman`
-      Update *salman*’s comment field.
+### 6. Verify shell change
 
-371. `tail -4 /etc/passwd`
-      Verify updated comment.
+```bash
+tail -2 /etc/passwd
+```
 
-372. `ls /home/`
-      View home directories of users.
+Verifies the shell change for `umair`.
 
-373. `ls /var/`
-      List contents of `/var`.
+### 7. Login as user
 
-374. `useradd -d /var/ifra ifra`
-      Create user *ifra* with custom home directory `/var/ifra`.
+```bash
+su umair
+```
 
-375. `tail /etc/passwd`
-      Confirm user *ifra* added.
+Logs in as `umair`.
 
-376. `ls /var/`
-      Check if custom home directory exists.
+### 8. Change shell to disallow login
 
-377. `su - ifra`
-      Login as *ifra* with full environment.
+```bash
+usermod -s /usr/sbin/nologin umair
+```
 
-378. `ls -l /var/`
-      View permissions and ownership of `/var`.
+Changes shell to disallow interactive login.
 
-379. `mkdir /var/dev`
-      Create new directory for user *dev*.
+### 9. Confirm updated shell entry
 
-380. `useradd -d /var/dev dev`
-      Assign `/var/dev` as home for new user *dev*.
+```bash
+tail -2 /etc/passwd
+```
 
-381. `ls -l /var/`
-      Confirm `/var/dev` exists.
+Confirms the updated shell entry.
 
-382. `passwd dev`
-      Set password for *dev*.
+### 10. Login fails due to nologin shell
 
-383. `su dev`
-      Switch to user *dev*.
+```bash
+su umair
+```
 
-384. `tail /etc/passwd`
-      Confirm *dev* added to passwd.
+Login fails due to nologin shell.
 
-385. `usermod -l zahidali zahid`
-      Rename user *zahid* to *zahidali*.
+### 11. Create user with specific UID and GID
 
-386. `tail /etc/passwd`
-      Confirm rename worked.
+```bash
+useradd -u 1010 -g 1010 salman
+```
 
-387. `usermod -l zahid zahidali`
-      Rename *zahidali* back to *zahid*.
+Creates user `salman` with specific UID and GID.
 
-388. `tail /etc/passwd`
-      Reconfirm username.
+### 12. Attempt to reassign user to different GID
 
-389. `su salman`
-      Switch to user *salman*.
+```bash
+useradd -u 1010 -g 1004 salman
+```
 
-390. `usermod -L salman`
-      Lock account *salman*.
+Attempts to reassign `salman` to a different GID (fails if user exists).
 
-391. `su salman`
-      Login blocked due to account lock.
+### 13. Check latest user additions
 
-392. `su zubair`
-      Switch to another user.
+```bash
+tail -3 /etc/passwd
+```
 
-393. `passwd salman`
-      Reset password for *salman*.
+Checks the latest user additions.
 
-394. `su zubair`
-      Return to user *zubair*.
+### 14. Create user with custom comment
 
-395. `usermod -L salman`
-      Lock *salman* again.
+```bash
+useradd -c "Zahid Ali" zahid
+```
 
-396. `su zubair`
-      Stay in current shell.
+Creates `zahid` with a custom comment field.
 
-397. `usermod -U salman`
-      Unlock account *salman*.
+### 15. Set password for user
 
-398. `su zubair`
-      Continue session.
+```bash
+passwd zahid
+```
 
-399. `tail /etc/shadow`
-      View last entries in shadow file.
+Sets password for `zahid`.
 
-400. `tail -5/etc/shadow`
-      (Incorrect syntax, missing space.)
+### 16. Display recent user entries
 
-401. `tail -5 /etc/shadow`
-      Proper syntax to view last 5 lines.
+```bash
+tail -4 /etc/passwd
+```
 
-402. `usermod -L salman`
-      Lock *salman* account again.
+Shows recent user entries.
 
-403. `grep -r salman /etc/shadow`
-      Search for *salman*’s entry in shadow.
+### 17. Update user's comment field
 
-404. `usermod -U salman`
-      Unlock *salman*.
+```bash
+usermod -c "Salman Khan" salman
+```
 
-405. `grep -r salman /etc/shadow`
-      Confirm changes.
+Updates `salman`'s comment field.
 
-406. `man chage`
-      Open manual for `chage` command.
+### 18. Verify updated comment
 
-407. `grep -r salman /etc/shadow`
-      Monitor *salman*’s entry again.
+```bash
+tail -4 /etc/passwd
+```
 
-408. `chage -m 3 salman`
-      Set minimum password age to 3 days.
+Verifies the updated comment.
 
-409. `grep -r salman /etc/shadow`
-      Verify change in shadow file.
+### 19. View home directories of users
 
-410. `su salman`
-      Login as *salman*.
+```bash
+ls /home/
+```
 
-411. `chage -m 0 salman`
-      Remove minimum password age restriction.
+Lists user home directories.
 
-412. `su salman`
-      Re-login as *salman*.
+### 20. List contents of /var
 
-413. `grep -r salman /etc/shadow`
-      Recheck shadow entry.
+```bash
+ls /var/
+```
 
-414. `chage -M 90 salman`
-      Set maximum password age to 90 days.
+Lists contents of `/var`.
 
-415. `grep -r salman /etc/shadow`
-      Verify password expiration policy.
+### 21. Create user with custom home directory
 
-416. `chage -W 10 salman`
-      Set warning period to 10 days before password expiration.
+```bash
+useradd -d /var/ifra ifra
+```
 
-417. `grep -r salman /etc/shadow`
-      Confirm warning policy.
+Creates user `ifra` with custom home directory `/var/ifra`.
 
-418. `chage -E 2025-10-30 salman`
-      Set account expiration date.
+### 22. Confirm user added
 
-419. `grep -r salman /etc/shadow`
-      Final verification.
+```bash
+tail /etc/passwd
+```
 
-420. `ls /home/`
-      Check home directories.
+Confirms user `ifra` added.
 
-421. `userdel ali`
-      Delete user *ali*.
+### 23. Check if custom home directory exists
 
-422. `vi /etc/passwd`
-      Inspect passwd file.
+```bash
+ls /var/
+```
 
-423. `useradd ali`
-      Recreate user *ali*.
+Checks if custom home directory exists.
 
-424. `vi /etc/passwd`
-      Confirm user entry.
+### 24. Login as user with full environment
 
-425. `userdel -r ali`
-      Delete user and home directory.
+```bash
+su - ifra
+```
 
-426. `ls`
-      List current directory contents.
+Logs in as `ifra` with full environment.
 
-427. `ls /home/ -l`
-      Check home directory with permissions.
+### 25. View permissions and ownership of /var
 
-428. `userdel -r wali`
-      Delete user *wali* and home directory.
+```bash
+ls -l /var/
+```
 
-429. `ls /home/ -l`
-      Confirm deletion.
+Shows permissions and ownership of `/var`.
 
-430. `cat /etc/group`
-      View all system groups.
+### 26. Create new directory for user
 
-431. `groupadd stag`
-      Create new group *stag*.
+```bash
+mkdir /var/dev
+```
 
-432. `cat /etc/group`
-      Confirm group creation.
+Creates new directory for user `dev`.
 
-433. `useradd -g stag arshad`
-      Create user *arshad* with primary group *stag*.
+### 27. Assign custom home for new user
 
-434. `id arshad`
-      Show UID and GID for *arshad*.
+```bash
+useradd -d /var/dev dev
+```
 
-435. `cat /etc/passwd`
-      Confirm user added.
+Assigns `/var/dev` as home for new user `dev`.
 
-436. `id ifra`
-      View groups assigned to *ifra*.
+### 28. Confirm /var/dev exists
 
-437. `usermod -aG stag ifra`
-      Append *ifra* to group *stag*.
+```bash
+ls -l /var/
+```
 
-438. `id ifra`
-      Confirm multiple group memberships.
+Confirms `/var/dev` exists.
 
-439. `groupadd qa`
-      Create group *qa*.
+### 29. Set password for dev
 
-440. `usermod -G qa ifra`
-      Set *qa* as exclusive group for *ifra*.
+```bash
+passwd dev
+```
 
-441. `id ifra`
-      View updated group list.
+Sets password for `dev`.
 
-442. `usermod -G qa,stag ifra`
-      Assign *ifra* to both *qa* and *stag*.
+### 30. Switch to user dev
 
-443. `id ifra`
-      Confirm both group assignments.
+```bash
+su dev
+```
 
-444. `usermod -G stag ifra`
-      Set *stag* as only supplementary group.
+Switches to user `dev`.
 
-445. `id ifra`
-      View final group membership.
+### 31. Confirm dev added to passwd
+
+```bash
+tail /etc/passwd
+```
+
+Confirms `dev` added to passwd.
+
+### 32. Rename user zahid to zahidali
+
+```bash
+usermod -l zahidali zahid
+```
+
+Renames user `zahid` to `zahidali`.
+
+### 33. Confirm rename worked
+
+```bash
+tail /etc/passwd
+```
+
+Confirms rename worked.
+
+### 34. Rename zahidali back to zahid
+
+```bash
+usermod -l zahid zahidali
+```
+
+Renames `zahidali` back to `zahid`.
+
+### 35. Reconfirm username
+
+```bash
+tail /etc/passwd
+```
+
+Reconfirms username.
+
+### 36. Switch to user salman
+
+```bash
+su salman
+```
+
+Switches to user `salman`.
+
+### 37. Lock account salman
+
+```bash
+usermod -L salman
+```
+
+Locks account `salman`.
+
+### 38. Login blocked due to account lock
+
+```bash
+su salman
+```
+
+Login blocked due to account lock.
+
+### 39. Switch to another user
+
+```bash
+su zubair
+```
+
+Switches to another user.
+
+### 40. Reset password for salman
+
+```bash
+passwd salman
+```
+
+Resets password for `salman`.
+
+### 41. Lock salman again
+
+```bash
+usermod -L salman
+```
+
+Locks `salman` again.
+
+### 42. Unlock account salman
+
+```bash
+usermod -U salman
+```
+
+Unlocks account `salman`.
+
+### 43. View last entries in shadow file
+
+```bash
+tail /etc/shadow
+```
+
+Views last entries in the shadow file.
+
+### 44. Proper syntax to view last 5 lines
+
+```bash
+tail -5 /etc/shadow
+```
+
+Views last 5 lines of the shadow file.
+
+### 45. Lock salman account again
+
+```bash
+usermod -L salman
+```
+
+Locks `salman` account again.
+
+### 46. Search for salman’s entry in shadow
+
+```bash
+grep -r salman /etc/shadow
+```
+
+Searches for `salman` in the shadow file.
+
+### 47. Unlock salman
+
+```bash
+usermod -U salman
+```
+
+Unlocks `salman`.
+
+### 48. Open manual for chage command
+
+```bash
+man chage
+```
+
+Opens the manual for the `chage` command.
+
+### 49. Set minimum password age
+
+```bash
+chage -m 3 salman
+```
+
+Sets minimum password age to 3 days for `salman`.
+
+### 50. Remove minimum password age restriction
+
+```bash
+chage -m 0 salman
+```
+
+Removes minimum password age restriction for `salman`.
+
+### 51. Set maximum password age
+
+```bash
+chage -M 90 salman
+```
+
+Sets maximum password age to 90 days for `salman`.
+
+### 52. Set warning period before password expiration
+
+```bash
+chage -W 10 salman
+```
+
+Sets warning period to 10 days before password expiration.
+
+### 53. Set account expiration date
+
+```bash
+chage -E 2025-10-30 salman
+```
+
+Sets account expiration date for `salman`.
+
+### 54. Check home directories
+
+```bash
+ls /home/
+```
+
+Checks user home directories.
+
+### 55. Delete user ali
+
+```bash
+userdel ali
+```
+
+Deletes user `ali`.
+
+### 56. Inspect passwd file
+
+```bash
+vi /etc/passwd
+```
+
+Inspects the passwd file.
+
+### 57. Recreate user ali
+
+```bash
+useradd ali
+```
+
+Recreates user `ali`.
+
+### 58. Delete user and home directory
+
+```bash
+userdel -r ali
+```
+
+Deletes user `ali` and their home directory.
+
+### 59. List current directory contents
+
+```bash
+ls
+```
+
+Lists current directory contents.
+
+### 60. Check home directory with permissions
+
+```bash
+ls /home/ -l
+```
+
+Checks home directory with permissions.
+
+### 61. Delete user wali and home directory
+
+```bash
+userdel -r wali
+```
+
+Deletes user `wali` and their home directory.
+
+### 62. Confirm deletion
+
+```bash
+ls /home/ -l
+```
+
+Confirms deletion.
+
+### 63. View all system groups
+
+```bash
+cat /etc/group
+```
+
+Views all system groups.
+
+### 64. Create new group stag
+
+```bash
+groupadd stag
+```
+
+Creates new group `stag`.
+
+### 65. Confirm group creation
+
+```bash
+cat /etc/group
+```
+
+Confirms group creation.
+
+### 66. Create user with primary group stag
+
+```bash
+useradd -g stag arshad
+```
+
+Creates user `arshad` with primary group `stag`.
+
+### 67. Show UID and GID for arshad
+
+```bash
+id arshad
+```
+
+Shows UID and GID for `arshad`.
+
+### 68. Confirm user added
+
+```bash
+cat /etc/passwd
+```
+
+Confirms user added.
+
+### 69. View groups assigned to ifra
+
+```bash
+id ifra
+```
+
+Views groups assigned to `ifra`.
+
+### 70. Append ifra to group stag
+
+```bash
+usermod -aG stag ifra
+```
+
+Appends `ifra` to group `stag`.
+
+### 71. Confirm multiple group memberships
+
+```bash
+id ifra
+```
+
+Confirms multiple group memberships.
+
+### 72. Create group qa
+
+```bash
+groupadd qa
+```
+
+Creates group `qa`.
+
+### 73. Set qa as exclusive group for ifra
+
+```bash
+usermod -G qa ifra
+```
+
+Sets `qa` as exclusive group for `ifra`.
+
+### 74. View updated group list
+
+```bash
+id ifra
+```
+
+Views updated group list.
+
+### 75. Assign ifra to both qa and stag
+
+```bash
+usermod -G qa,stag ifra
+```
+
+Assigns `ifra` to both `qa` and `stag`.
+
+### 76. Confirm both group assignments
+
+```bash
+id ifra
+```
+
+Confirms both group assignments.
+
+### 77. Set stag as only supplementary group
+
+```bash
+usermod -G stag ifra
+```
+
+Sets `stag` as only supplementary group for `ifra`.
+
+### 78. View final group membership
+
+```bash
+id ifra
+```
+
+Views final group membership.
+
+---
+
+*End of Session 14 — 2 Aug 2025*
 
 

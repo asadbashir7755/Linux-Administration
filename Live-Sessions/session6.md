@@ -1,132 +1,263 @@
 # 📅 Session 6 — 15 Jun 2025
 
-148. `lsblk`
-     List block devices and topology.
+## 🖥️ Commands Learned
 
-149. `#block devices`
-     Comment: label for the topic.
+### 1. List block devices
 
-150. `df`
-     Filesystem disk usage.
+```bash
+lsblk
+```
 
-151. `df -h`
-     Human-readable sizes.
+Lists block devices and their topology.
 
-152. `lscpu`
-     CPU architecture info.
+### 2. Filesystem disk usage
 
-153. `df -k`
-     Use 1K blocks.
+```bash
+df
+```
 
-154. `df -m`
-     Use 1M blocks.
+Shows filesystem disk usage.
 
-155. `df -g`
-     Use 1G blocks (support may vary).
+### 3. Human-readable disk usage
 
-156. *(blank/aborted entry)*
+```bash
+df -h
+```
 
-157. `df -ka`
-     1K blocks and include all filesystems (incl. pseudo).
+Displays disk usage in human-readable sizes.
 
-158. `man df`
-     Manual for df.
+### 4. CPU architecture info
 
-159. `df -h`
-     Repeat human-readable usage.
+```bash
+lscpu
+```
 
-160. `lscpu`
-     Repeat CPU info.
+Displays CPU architecture information.
 
-161. `lscpu | grep Core`
-     Filter lines containing “Core”.
+### 5. Disk usage in 1K blocks
 
-162. `lscpu | grep Core > cpu_info.txt`
-     Save filtered CPU info.
+```bash
+df -k
+```
 
-163. `ls`
-     List files.
+Shows disk usage using 1K blocks.
 
-164. `cat cpu_info.txt`
-     View saved CPU info.
+### 6. Disk usage in 1M blocks
 
-165. `lscpu | grep zubair`
-     Example grep with no expected match.
+```bash
+df -m
+```
 
-166. `ls`
-     List.
+Shows disk usage using 1M blocks.
 
-167. `du anaconda-ks.cfg`
-     Disk usage of a file.
+### 7. Disk usage in 1G blocks
 
-168. `du /var/log/messages`
-     Disk usage of a specific log file.
+```bash
+df -g
+```
 
-169. `du -h /var/log/messages`
-     Human-readable file size.
+Shows disk usage using 1G blocks (support may vary).
 
-170. `du -h /var/log`
-     Per-directory sizes under /var/log.
+### 8. Disk usage in 1K blocks, all filesystems
 
-171. `du -hs /var/log`
-     Summary total for /var/log.
+```bash
+df -ka
+```
 
-172. `ls /var/log`
-     List logs to correlate with sizes.
+Shows disk usage in 1K blocks and includes all filesystems (including pseudo filesystems).
 
-173. `du -h /var/log`
-     Repeat per-directory sizes.
+### 9. Manual for df
 
-174. `du -h /var/log/messages`
-     Repeat file size.
+```bash
+man df
+```
 
-175. `du -hs /var/log`
-     Repeat summary.
+Displays the manual page for `df`.
 
-176. `du -hs /var/`
-     Summary for /var.
+### 10. Filter CPU info for "Core"
 
-177. `du -hs /`
-     Summary for root filesystem (can be slow).
+```bash
+lscpu | grep Core
+```
 
-178. `ls /var/log`
-     List logs again.
+Filters CPU info lines containing "Core".
 
-179. `lsblk`
-     Repeat block devices list.
+### 11. Save filtered CPU info to file
 
-180. `free`
-     Memory and swap usage.
+```bash
+lscpu | grep Core > cpu_info.txt
+```
 
-181. `free -h`
-     Human-readable memory info.
+Saves filtered CPU info to `cpu_info.txt`.
 
-182. `top`
-     Interactive process viewer.
+### 12. List files
 
-183. `ip a`
-     Show all interfaces and IPs.
+```bash
+ls
+```
 
-184. `ip a | grep inet`
-     Filter address lines only.
+Lists files in the current directory.
 
-185. `nmtui`
-     NetworkManager TUI for managing connections.
+### 13. View saved CPU info
 
-186. `ifconfig`
-     Legacy interface display (net-tools).
+```bash
+cat cpu_info.txt
+```
 
-187. `uptime`
-     System uptime and load averages.
+Displays the contents of `cpu_info.txt`.
 
-188. `ping 127.0.0.1`
-     Ping localhost to test networking stack.
+### 14. Example grep with no expected match
 
-189. `# Default TTL Values`
-     Comment/explanation line.
+```bash
+lscpu | grep zubair
+```
 
-190. `# TTL Time To Live`
-     Comment elaboration.
+Attempts to filter for "zubair" (no match expected).
 
-191. `history`
-     Show command history.
+### 15. Disk usage of a file
+
+```bash
+du anaconda-ks.cfg
+```
+
+Shows disk usage of the file `anaconda-ks.cfg`.
+
+### 16. Disk usage of a specific log file
+
+```bash
+du /var/log/messages
+```
+
+Shows disk usage of `/var/log/messages`.
+
+### 17. Human-readable file size
+
+```bash
+du -h /var/log/messages
+```
+
+Shows human-readable size of `/var/log/messages`.
+
+### 18. Per-directory sizes under /var/log
+
+```bash
+du -h /var/log
+```
+
+Shows per-directory sizes under `/var/log`.
+
+### 19. Summary total for /var/log
+
+```bash
+du -hs /var/log
+```
+
+Shows summary total for `/var/log`.
+
+### 20. List logs to correlate with sizes
+
+```bash
+ls /var/log
+```
+
+Lists log files in `/var/log`.
+
+### 21. Summary for /var
+
+```bash
+du -hs /var/
+```
+
+Shows summary disk usage for `/var`.
+
+### 22. Summary for root filesystem
+
+```bash
+du -hs /
+```
+
+Shows summary disk usage for the root filesystem (can be slow).
+
+### 23. Memory and swap usage
+
+```bash
+free
+```
+
+Displays memory and swap usage.
+
+### 24. Human-readable memory info
+
+```bash
+free -h
+```
+
+Displays memory and swap usage in human-readable format.
+
+### 25. Interactive process viewer
+
+```bash
+top
+```
+
+Shows an interactive process viewer.
+
+### 26. Show all interfaces and IPs
+
+```bash
+ip a
+```
+
+Displays all network interfaces and their IP addresses.
+
+### 27. Filter address lines only
+
+```bash
+ip a | grep inet
+```
+
+Filters for lines containing IP addresses.
+
+### 28. NetworkManager TUI
+
+```bash
+nmtui
+```
+
+Opens the NetworkManager text user interface.
+
+### 29. Legacy interface display
+
+```bash
+ifconfig
+```
+
+Displays network interfaces (legacy tool).
+
+### 30. System uptime and load averages
+
+```bash
+uptime
+```
+
+Shows system uptime and load averages.
+
+### 31. Ping localhost
+
+```bash
+ping 127.0.0.1
+```
+
+Pings localhost to test the networking stack.
+
+### 32. Show command history
+
+```bash
+history
+```
+
+Displays the command history.
+
+---
+
+*End of Session 6 — 15 Jun 2025*

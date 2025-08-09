@@ -1,269 +1,510 @@
-
 # 📅 Session 8 — 6 Jul 2025 • Package Management — DNF
 
-148. `# Package Manager`
-      Note: Comment line; not executed.
+## 🖥️ Commands Learned
 
-149. `#yum yellow dog updater modified`
-      Note: Yum stands for “Yellowdog Updater, Modified.”
+### 1. Search for EPEL release package
 
-150. `#yum yellowdog updater, modified`
-      Note: Alternate phrasing; still a comment.
+```bash
+dnf search epel-release
+```
 
-151. `#dnf dandified YUM`
-      Note: DNF is “Dandified YUM,” the modern replacement for yum.
+Searches repositories for packages matching `epel-release`.  
+EPEL provides extra packages for Enterprise Linux.
 
-152. `dnf search epel-release`
-      Search repositories for packages matching epel-release.
-      Note: EPEL provides extra packages for Enterprise Linux.
+### 2. Check network connectivity
 
-153. `ping google.com`
-      Check network connectivity and DNS resolution.
-      Note: Use Ctrl+C to stop; requires ICMP allowed.
+```bash
+ping google.com
+```
 
-154. `dnf search epel-release`
-      Repeat search to confirm results.
+Checks network connectivity and DNS resolution. Use `Ctrl+C` to stop.
 
-155. `dnf search nload`
-      Search for the nload network monitor package.
+### 3. Search for nload package
 
-156. `ls /etc/yum.repos.d/`
-      List configured repository files.
+```bash
+dnf search nload
+```
 
-157. `ls /etc/yum.repos.d/ -l`
-      Long list repo files (permissions, timestamps).
+Searches for the `nload` network monitor package.
 
-158. `vi /etc/yum.repos.d/centos-addons.repo`
-      Edit or view the centos-addons repo file.
+### 4. List configured repository files
 
-159. `vi /etc/yum.repos.d/centos.repo`
-      Edit/view the base CentOS repo file.
+```bash
+ls /etc/yum.repos.d/
+```
 
-160. `dnf search nload`
-      Re-run search for nload.
+Lists configured repository files.
 
-161. `dnf search epel-release`
-      Re-run search for EPEL.
+### 5. Long list repo files
 
-162. `dnf info epel-release.noarch`
-      Detailed metadata for epel-release (version, repo, summary).
+```bash
+ls /etc/yum.repos.d/ -l
+```
 
-163. `dnf list installed`
-      List all installed packages.
+Shows permissions, timestamps, and details for repo files.
 
-164. `dnf list installed > total_pkgs`
-      Save the installed package list to a file.
+### 6. Edit centos-addons repo file
 
-165. `ls`
-      Verify file saved.
+```bash
+vi /etc/yum.repos.d/centos-addons.repo
+```
 
-166. `vim total_pkgs`
-      View/edit the saved package list.
+Edit or view the centos-addons repo file.
 
-167. `dnf list installed | wc -l`
-      Count installed packages (lines).
+### 7. Edit base CentOS repo file
 
-168. `dnf list installed | grep words.noarch`
-      Check if “words.noarch” is installed.
+```bash
+vi /etc/yum.repos.d/centos.repo
+```
 
-169. `dnf list installed | grep nload`
-      Check if nload is installed.
+Edit or view the base CentOS repo file.
 
-170. `dnf list installed | grep epel-release`
-      Verify if EPEL release package is present.
+### 8. Show detailed metadata for epel-release
 
-171. `dnf info epel-release.noarch`
-      Show info again to confirm.
+```bash
+dnf info epel-release.noarch
+```
 
-172. `dnf install epel-release.noarch`
-      Install EPEL repository release package.
-      Note: Requires sudo/root.
+Displays detailed metadata for the `epel-release` package.
 
-173. `dnf info epel-release.noarch`
-      Confirm installation details.
+### 9. List all installed packages
 
-174. `history`
-      Show command history.
+```bash
+dnf list installed
+```
 
-175. `pwd`
-      Print working directory.
+Lists all installed packages.
 
-176. `ls yum.repos.d`
-      List a relative path (works if current dir is /etc).
+### 10. Save installed package list to a file
 
-177. `ls`
-      List current directory.
+```bash
+dnf list installed > total_pkgs
+```
 
-178. `ls ../../etc/yum.repos.d/`
-      List repo dir via relative path.
+Saves the installed package list to `total_pkgs`.
 
-179. `ls /etc/yum.repos.d/`
-      List repo dir with absolute path.
+### 11. View/edit the saved package list
 
-180. `cd /etc/`
-      Change directory to /etc.
+```bash
+vim total_pkgs
+```
 
-181. `ls`
-      List /etc contents.
+View or edit the saved package list in Vim.
 
-182. `ls yum.repos.d/`
-      List repo files within /etc.
+### 12. Count installed packages
+
+```bash
+dnf list installed | wc -l
+```
+
+Counts the number of installed packages.
+
+### 13. Check if a package is installed
+
+```bash
+dnf list installed | grep words.noarch
+```
+
+Checks if `words.noarch` is installed.
+
+### 14. Check if nload is installed
+
+```bash
+dnf list installed | grep nload
+```
+
+Checks if `nload` is installed.
+
+### 15. Verify if EPEL release package is present
+
+```bash
+dnf list installed | grep epel-release
+```
+
+Checks if `epel-release` is installed.
+
+### 16. Install EPEL repository release package
+
+```bash
+dnf install epel-release.noarch
+```
+
+Installs the EPEL repository release package (requires sudo/root).
+
+### 17. Show command history
+
+```bash
+history
+```
+
+Displays the command history.
+
+### 18. Print working directory
+
+```bash
+pwd
+```
+
+Prints the current working directory.
+
+### 19. List repo files (relative path)
+
+```bash
+ls yum.repos.d
+```
+
+Lists repo files using a relative path (if in `/etc`).
+
+### 20. List repo dir via relative path
+
+```bash
+ls ../../etc/yum.repos.d/
+```
+
+Lists the repo directory using a relative path.
+
+### 21. List repo dir with absolute path
+
+```bash
+ls /etc/yum.repos.d/
+```
+
+Lists the repo directory with an absolute path.
+
+### 22. Change directory to /etc
+
+```bash
+cd /etc/
+```
+
+Changes directory to `/etc`.
+
+### 23. List /etc contents
+
+```bash
+ls
+```
+
+Lists contents of `/etc`.
+
+### 24. List repo files within /etc
+
+```bash
+ls yum.repos.d/
+```
+
+Lists repo files within `/etc`.
 
 ---
 
 # 📅 Session 9 — 6 Jul 2025 • Package Management — DNF (Part 2)
 
-184. `dnf search nlaod`
-      Typo in package name; will likely return no results.
-      Note: Correct spelling is “nload.”
+## 🖥️ Commands Learned
 
-185. `dnf search nload`
-      Search for the correct package.
+### 1. Typo in package name (will fail)
 
-186. `dnf info nload`
-      Show package details for nload.
+```bash
+dnf search nlaod
+```
 
-187. `dnf install nload`
-      Install nload (interactive confirmation).
+Typo in package name; correct spelling is `nload`.
 
-188. `dnf install nload -y`
-      Install nload without prompting.
+### 2. Search for nload
 
-189. `nload`
-      Run the network monitor (TUI).
-      Note: Use arrow keys/q to quit.
+```bash
+dnf search nload
+```
 
-190. `dnf info nload`
-      Verify installed version.
+Searches for the correct package.
 
-191. `dnf remove nload`
-      Remove nload (interactive).
+### 3. Show package details for nload
 
-192. `dnf remove nload -y`
-      Remove without prompt.
+```bash
+dnf info nload
+```
 
-193. `dnf info nload`
-      Show info (may indicate not installed).
+Displays details for the `nload` package.
 
-194. `dnf install nload -y`
-      Reinstall nload.
+### 4. Install nload (interactive)
 
-195. `dnf update nload`
-      Update nload to latest available version.
+```bash
+dnf install nload
+```
 
-196. `dnf update epel-release`
-      Update EPEL release package.
+Installs `nload` with interactive confirmation.
 
-197. `dnf info epel-release`
-      Show details.
+### 5. Install nload without prompting
 
-198. `dnf update epel-release`
-      Repeat update command.
+```bash
+dnf install nload -y
+```
 
-199. `dnf info epel-release`
-      Confirm current version.
+Installs `nload` without prompting.
 
-200. `dnf update`
-      Update all packages to latest versions.
-      Note: Consider maintenance windows for system-wide updates.
+### 6. Run the network monitor
 
-201. `semanage`
-      SELinux management tool (may not be installed).
-      Note: Provided by policycoreutils-python-utils or policycoreutils packages.
+```bash
+nload
+```
 
-202. `whereis semanage`
-      Locate binaries/man pages related to semanage.
+Runs the `nload` network monitor (TUI).
 
-203. `dnf provides semanage`
-      Find which package supplies the “semanage” command.
+### 7. Remove nload (interactive)
 
-204. `dnf provides nload`
-      Identify which package provides nload binary.
+```bash
+dnf remove nload
+```
 
-205. `dnf provides ls`
-      Query provider of “ls” (usually coreutils).
+Removes `nload` interactively.
 
-206. `dnf provides vim`
-      Determine which package provides vim.
+### 8. Remove nload without prompt
 
-207. `gnf group list`
-      Typo “gnf”; this will fail.
-      Note: Should be dnf group list.
+```bash
+dnf remove nload -y
+```
 
-208. `dnf group list`
-      List available and installed package groups.
+Removes `nload` without prompting.
 
-209. `dnf group install "Server with GUI"`
-      Install a group (meta-package) for GUI server environment.
-      Note: Large download; ensure disk space.
+### 9. Update nload to latest version
 
-210. `dnf group list`
-      Verify group status.
+```bash
+dnf update nload
+```
 
-211. `dnf group install ".NET Development"`
-      Install .NET development group (if available).
+Updates `nload` to the latest available version.
 
-212. `dnf group install "Security Tools"`
-      Install security tools group.
+### 10. Update EPEL release package
 
-213. `dnf group remove "Security Tools"`
-      Remove the previously installed group.
+```bash
+dnf update epel-release
+```
 
-214. `dnf info nload`
-      Re-check nload details.
+Updates the EPEL release package.
 
-215. `dnf remove -y nload`
-      Remove nload silently.
+### 11. Update all packages
 
-216. `dnf install nload --download-only`
-      Download package without installing (variant flag).
+```bash
+dnf update
+```
 
-217. `dnf install nload --downloadonly`
-      Equivalent option (canonical spelling).
-      Note: Packages cached under /var/cache/dnf/.
+Updates all packages to the latest versions.
 
-218. `find /var -name nload*`
-      Locate cached RPMs.
+### 12. SELinux management tool
 
-219. `cp /var/cache/dnf/epel-4b20c555de8aed94/packages/nload-0.7.4-23.el9.x86_64.rpm /home/zubair/`
-      Copy downloaded RPM from cache to home.
+```bash
+semanage
+```
 
-220. `cd /home/zubair/`
-      Go to home directory.
+SELinux management tool (may not be installed).
 
-221. `ls`
-      Verify copied RPM.
+### 13. Locate semanage
 
-222. `dnf clean packages`
-      Clean cached packages.
-      Note: Frees space; removes package files from cache.
+```bash
+whereis semanage
+```
 
-223. `find /var -name nload*`
-      Check cache after cleaning.
+Locates binaries/man pages related to `semanage`.
 
-224. `find . -name nload*`
-      Search current directory for matching files.
+### 14. Find which package supplies a command
 
-225. `find . -name nload`
-      Search for exact name.
+```bash
+dnf provides semanage
+```
 
-226. `find . -name nload*`
-      Repeat wildcard search.
+Finds which package supplies the `semanage` command.
 
-227. `ls`
-      List.
+### 15. Identify which package provides nload
 
-228. `dnf clean packages`
-      Clean cache again.
+```bash
+dnf provides nload
+```
 
-229. `ls`
-      List.
+Identifies which package provides the `nload` binary.
 
-230. `vimtutor`
-      Launch Vim tutorial (practice).
+### 16. Query provider of "ls"
 
-231. `whereis vimtutor`
-      Locate the vimtutor binary/man page.
+```bash
+dnf provides ls
+```
 
-232. `history`
-      Show history.
+Queries which package provides `ls` (usually coreutils).
+
+### 17. Determine which package provides vim
+
+```bash
+dnf provides vim
+```
+
+Determines which package provides `vim`.
+
+### 18. Typo in group list command (will fail)
+
+```bash
+gnf group list
+```
+
+Typo: should be `dnf group list`.
+
+### 19. List available and installed package groups
+
+```bash
+dnf group list
+```
+
+Lists available and installed package groups.
+
+### 20. Install Server with GUI group
+
+```bash
+dnf group install "Server with GUI"
+```
+
+Installs the GUI server environment group.
+
+### 21. Install .NET Development group
+
+```bash
+dnf group install ".NET Development"
+```
+
+Installs the .NET development group (if available).
+
+### 22. Install Security Tools group
+
+```bash
+dnf group install "Security Tools"
+```
+
+Installs the security tools group.
+
+### 23. Remove Security Tools group
+
+```bash
+dnf group remove "Security Tools"
+```
+
+Removes the previously installed security tools group.
+
+### 24. Remove nload silently
+
+```bash
+dnf remove -y nload
+```
+
+Removes `nload` without prompting.
+
+### 25. Download package without installing
+
+```bash
+dnf install nload --download-only
+```
+
+Downloads the package without installing.
+
+### 26. Equivalent download-only option
+
+```bash
+dnf install nload --downloadonly
+```
+
+Equivalent to the above; packages are cached under `/var/cache/dnf/`.
+
+### 27. Locate cached RPMs
+
+```bash
+find /var -name nload*
+```
+
+Locates cached RPMs.
+
+### 28. Copy downloaded RPM from cache to home
+
+```bash
+cp /var/cache/dnf/epel-4b20c555de8aed94/packages/nload-0.7.4-23.el9.x86_64.rpm /home/zubair/
+```
+
+Copies the downloaded RPM to the home directory.
+
+### 29. Go to home directory
+
+```bash
+cd /home/zubair/
+```
+
+Changes to the home directory.
+
+### 30. Verify copied RPM
+
+```bash
+ls
+```
+
+Verifies the copied RPM.
+
+### 31. Clean cached packages
+
+```bash
+dnf clean packages
+```
+
+Cleans cached packages to free space.
+
+### 32. Check cache after cleaning
+
+```bash
+find /var -name nload*
+```
+
+Checks the cache after cleaning.
+
+### 33. Search current directory for matching files
+
+```bash
+find . -name nload*
+```
+
+Searches the current directory for matching files.
+
+### 34. Search for exact name
+
+```bash
+find . -name nload
+```
+
+Searches for files named exactly `nload`.
+
+### 35. List
+
+```bash
+ls
+```
+
+Lists files in the current directory.
+
+### 36. Launch Vim tutorial
+
+```bash
+vimtutor
+```
+
+Launches the Vim tutorial for practice.
+
+### 37. Locate vimtutor
+
+```bash
+whereis vimtutor
+```
+
+Locates the `vimtutor` binary or man page.
+
+### 38. Show history
+
+```bash
+history
+```
+
+Displays the command history.
+
+---
+
+*End of Sessions 8 & 9 — 6 Jul 2025*

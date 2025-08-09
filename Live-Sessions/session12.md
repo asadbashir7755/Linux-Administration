@@ -1,367 +1,457 @@
-
 # 📅 Session 12 — 20 Jul 2025 • Links (Soft & Hard)
 
-233. `# Links`
-      Note: Topic header.
+## 🖥️ Commands Learned
 
-234. `# Soft link / Symlink / Symbolic Link`
-      Note: Symlinks point to a path, can cross filesystems.
+### 1. Check mounted filesystems and space
 
-235. `# file/folder`
-      Note: Symlinks can target files or directories.
+```bash
+df -h
+```
 
-236. `# cross filesystem support`
-      Note: Symlinks can span filesystems.
+Displays mounted filesystems and available space.
 
-237. `# Inodes different`
-      Note: Symlink has its own inode; not the same as target.
+### 2. List backups directory
 
-238. `# Depends upon source/ source path`
-      Note: Symlink validity depends on the target path existing.
+```bash
+ls /backups/
+```
 
-239. `df -h`
-      Check mounted filesystems and space.
+Lists contents of the `/backups/` directory.
 
-240. `ls /backups/`
-      List backups directory.
+### 3. Show current path
 
-241. `pwd`
-      Show current path.
+```bash
+pwd
+```
 
-242. `df -h`
-      Repeat filesystem overview.
+Prints the current working directory.
 
-243. `df -hi`
-      Show inode usage (useful for links).
+### 4. Show inode usage
 
-244. `ls`
-      List.
+```bash
+df -hi
+```
 
-245. `ls -i`
-      Show inode numbers with listing.
+Displays inode usage for filesystems.
 
-246. `ls`
-      List.
+### 5. Show inode numbers with listing
 
-247. `ls Downloads/`
-      List Downloads directory.
+```bash
+ls -i
+```
 
-248. `vi Downloads/abc`
-      Create/edit a file “abc”.
+Lists files with their inode numbers.
 
-249. `pwd`
-      Print working directory.
+### 6. List Downloads directory
 
-250. `ln -s /home/zubair/Downloads/abc /home/zubair/linked_abc`
-      Create a symlink named linked\_abc pointing to file abc.
+```bash
+ls Downloads/
+```
 
-251. `ls -l`
-      Show symlink arrow (linked\_abc -> target).
+Lists contents of the `Downloads` directory.
 
-252. `ls`
-      List.
+### 7. Create/edit a file in Downloads
 
-253. `cat linked_abc`
-      Read via symlink (shows target contents).
+```bash
+vi Downloads/abc
+```
 
-254. `vi linked_abc`
-      Edit target through symlink.
+Creates or edits the file `abc` in `Downloads`.
 
-255. `cat Downloads/abc`
-      Confirm contents.
+### 8. Print working directory
 
-256. `ls -id linked_abc`
-      Show inode and indicate it’s a symlink.
+```bash
+pwd
+```
 
-257. `ls -i linked_abc`
-      Inode of the symlink (different from target).
+Prints the current working directory.
 
-258. `ls -i`
-      List inodes in current dir.
+### 9. Create a symlink to a file
 
-259. `ls -i linked_abc`
-      Repeat inode for symlink.
+```bash
+ln -s /home/zubair/Downloads/abc /home/zubair/linked_abc
+```
 
-260. `ls -i Downloads/abc`
-      Inode of the target file.
+Creates a symbolic link `linked_abc` pointing to `abc`.
 
-261. `cd Downloads/`
-      Enter Downloads.
+### 10. Show symlink arrow
 
-262. `ls`
-      List.
+```bash
+ls -l
+```
 
-263. `mv abc Abc`
-      Rename target (case change).
+Shows symbolic link and its target.
 
-264. `ll`
-      Long list.
+### 11. Read via symlink
 
-265. `cd ..`
-      Up to home.
+```bash
+cat linked_abc
+```
 
-266. `ls -l`
-      linked\_abc now broken (points to old path/name).
-      Note: Symlinks do not auto-update on rename.
+Displays the contents of the target file via symlink.
 
-267. `cat linked_abc`
-      Likely error (No such file) due to broken link.
+### 12. Edit target through symlink
 
-268. `cd Downloads/`
-      Go back in.
+```bash
+vi linked_abc
+```
 
-269. `ls`
-      List.
+Edits the target file through the symlink.
 
-270. `ls -i`
-      Show inodes.
+### 13. Confirm contents
 
-271. `mv Abc abc`
-      Rename back to original.
+```bash
+cat Downloads/abc
+```
 
-272. `ls -i`
-      Inode may remain the same; path restored.
+Displays the contents of `Downloads/abc`.
 
-273. `ls ..`
-      List parent.
+### 14. Show inode and indicate symlink
 
-274. `ls -l ..`
-      Long list parent; linked\_abc should work again.
+```bash
+ls -id linked_abc
+```
 
-275. `cat ../linked_abc`
-      Reading via symlink works again.
+Shows inode and indicates it's a symlink.
 
-276. `ls`
-      List.
+### 15. Inode of the symlink
 
-277. `mv ..`
-      Invalid usage (mv requires src and dst).
-      Note: Likely produced an error.
+```bash
+ls -i linked_abc
+```
 
-278. `mv abc ..`
-      Move file out to parent directory.
+Shows inode of the symlink.
 
-279. `ls`
-      List (abc gone from Downloads).
+### 16. Inode of the target file
 
-280. `cd ..`
-      Up to home.
+```bash
+ls -i Downloads/abc
+```
 
-281. `ls`
-      List (abc now here).
+Shows inode of the target file.
 
-282. `ll`
-      Long list.
+### 17. Rename target (case change)
 
-283. `mv abc Downloads/`
-      Move file back to Downloads.
+```bash
+mv Downloads/abc Downloads/Abc
+```
 
-284. `ll`
-      Verify.
+Renames the file in `Downloads`.
 
-285. `ls`
-      List.
+### 18. linked_abc now broken
 
-286. `unlink linked_abc`
-      Remove the symlink only (target untouched).
+```bash
+ls -l
+```
 
-287. `ll`
-      Verify symlink removal.
+Shows that the symlink is now broken.
 
-288. `ls Downloads/`
-      Target file remains.
+### 19. Attempt to read broken symlink
 
-289. `ln -s /home/zubair/Downloads/abc /home/zubair/linked_abc`
-      Recreate symlink.
+```bash
+cat linked_abc
+```
 
-290. `ll`
-      Verify symlink.
+Attempts to read via the broken symlink (will error).
 
-291. `ls -i /home/zubair/Downloads/abc`
-      Inode of target.
+### 20. Rename back to original
 
-292. `rm /home/zubair/Downloads/abc`
-      Remove target file.
+```bash
+mv Downloads/Abc Downloads/abc
+```
 
-293. `ll`
-      Symlink now broken.
+Restores the original filename.
 
-294. `touch /home/zubair/Downloads/abc`
-      Recreate a new empty target file.
+### 21. Reading via symlink works again
 
-295. `ll`
-      Symlink now points to a (new) file (same path).
+```bash
+cat linked_abc
+```
 
-296. `ls -i /home/zubair/Downloads/abc`
-      Inode changed (new file).
+Symlink works again after restoring the target.
 
-297. `ls`
-      List.
+### 22. Move file out to parent directory
 
-298. `ll`
-      Verify.
+```bash
+mv Downloads/abc .
+```
 
-299. `file linked_abc`
-      Identify type (symbolic link).
+Moves `abc` from `Downloads` to the current directory.
 
-300. `file /dev/null`
-      Identify device file.
+### 23. Move file back to Downloads
 
-301. `file /dev/sda1`
-      Identify block device.
+```bash
+mv abc Downloads/
+```
 
-302. `file Downloads/`
-      Identify directory.
+Moves `abc` back to `Downloads`.
 
-303. `ls`
-      List.
+### 24. Remove the symlink only
 
-304. `file 28_jun_2025`
-      Identify type of that path (may not exist).
+```bash
+unlink linked_abc
+```
 
-305. `stat linked_abc`
-      Detailed metadata for symlink (and target).
+Removes the symlink, leaving the target untouched.
 
-306. `stat /home/zubair/Downloads/abc`
-      Detailed metadata for target file.
+### 25. Recreate symlink
 
-307. `ls`
-      List.
+```bash
+ln -s /home/zubair/Downloads/abc /home/zubair/linked_abc
+```
 
-308. `stat file_21`
-      Show stats (file may or may not exist).
+Recreates the symbolic link.
 
-309. `cd archiving_compression/`
-      Enter earlier working dir.
+### 26. Inode of target
 
-310. `stat archive.tar.gz`
-      Stats for compressed tar.
+```bash
+ls -i /home/zubair/Downloads/abc
+```
 
-311. `df -h`
-      Filesystem usage overview.
+Shows inode of the target file.
 
-312. `vi /backups/shared_file`
-      Edit shared\_file in /backups (create if needed).
+### 27. Remove target file
 
-313. `ln -s /backups/shared_file /home/zubair/imp_file`
-      Create symlink imp\_file to shared\_file.
+```bash
+rm /home/zubair/Downloads/abc
+```
 
-314. `cd ..`
-      Up to home.
+Removes the target file.
 
-315. `ll`
-      List and verify symlink.
+### 28. Recreate a new empty target file
 
-316. `cat imp_file`
-      Read through symlink.
+```bash
+touch /home/zubair/Downloads/abc
+```
 
-317. `ls`
-      List.
+Creates a new empty file at the same path.
 
-318. `ln -s /home/zubair/archiving_compression /home/zubair/Archiving_compression`
-      Symlink to a directory (capitalization differs).
+### 29. Inode changed (new file)
 
-319. `ll`
-      Verify directory symlink.
+```bash
+ls -i /home/zubair/Downloads/abc
+```
 
-320. `cat imp_file`
-      Read via symlink again.
+Shows new inode for the recreated file.
 
-321. `# HardLink`
-      Note: Start of hard link section.
+### 30. Identify type (symbolic link)
 
-322. `# Within filesystem`
-      Note: Hard links require same filesystem.
+```bash
+file linked_abc
+```
 
-323. `# Does not depend upon source/ both copies are orignal`
-      Note: Hard links are peer names to same inode.
+Identifies the file type as a symbolic link.
 
-324. `# hardlink is for files only`
-      Note: Cannot hard link directories (typically prohibited).
+### 31. Identify device file
 
-325. `# both linked files have same inode number`
-      Note: Key property of hard links.
+```bash
+file /dev/null
+```
 
-326. `ls`
-      List.
+Identifies `/dev/null` as a device file.
 
-327. `ln /backups/shared_file /home/zubair/hard_link`
-      Create hard link to shared\_file (must be same filesystem).
+### 32. Identify block device
 
-328. `ls`
-      List.
+```bash
+file /dev/sda1
+```
 
-329. `ls Downloads/`
-      List.
+Identifies `/dev/sda1` as a block device.
 
-330. `ln /home/zubair/Downloads/abc /home/zubair/hard_link`
-      Overwrite attempt; if hard\_link exists, this fails unless -f and same FS.
+### 33. Identify directory
 
-331. `ls -l`
-      Review links.
+```bash
+file Downloads/
+```
 
-332. `cat Downloads/abc`
-      Read target.
+Identifies `Downloads/` as a directory.
 
-333. `vi Downloads/abc`
-      Edit file (changes visible via all hard links).
+### 34. Detailed metadata for symlink
 
-334. `cat hard_link`
-      Read via hard link (should match).
+```bash
+stat linked_abc
+```
 
-335. `ll`
-      Long list.
+Shows detailed metadata for the symlink and its target.
 
-336. `ls -i hard_link`
-      Inode number for hard\_link.
+### 35. Detailed metadata for target file
 
-337. `ls -i Downloads/abc`
-      Inode number should match hard\_link.
+```bash
+stat /home/zubair/Downloads/abc
+```
 
-338. `stat hard_link`
-      Stats for the hard link.
+Shows metadata for the target file.
 
-339. `stat Downloads/abc`
-      Stats for the original name (same inode).
+### 36. Show stats for another file
 
-340. `ln /home/zubair/Downloads/abc /home/zubair/hard_link`
-      Another attempt to link to existing name; likely error unless removed first.
+```bash
+stat file_21
+```
 
-341. `rm /home/zubair/Downloads/abc`
-      Remove one name; data persists via hard\_link.
+Shows stats for `file_21` (may or may not exist).
 
-342. `cat hard_link`
-      Contents still accessible (inode still referenced).
+### 37. Enter earlier working dir
 
-343. `ln /home/zubair/hard_link /home/zubair/Downloads/abc`
-      Recreate another hard link back in Downloads.
+```bash
+cd archiving_compression/
+```
 
-344. `ls -i /home/zubair/Downloads/abc`
-      Verify inode.
+Changes to the `archiving_compression` directory.
 
-345. `cat /home/zubair/Downloads/abc`
-      Contents present.
+### 38. Stats for compressed tar
 
-346. `find / -samefile hard_link`
-      Find all hard links to the same inode (system-wide; slow; requires perms).
+```bash
+stat archive.tar.gz
+```
 
-347. `find /home -samefile hard_link`
-      Restrict search to /home.
+Shows stats for `archive.tar.gz`.
 
-348. `ls -i /home/zubair/Downloads/abc`
-      Inode verification.
+### 39. Filesystem usage overview
 
-349. `ls -i /home/zubair/hard_link`
-      Inode verification (should match).
+```bash
+df -h
+```
 
-350. `ls`
-      List.
+Displays filesystem usage.
 
-351. `ln /home/zubair/archiving_compression /home/zubair/arc`
-      Attempt hard link to a directory; generally not permitted.
-      Note: Expect “Operation not permitted.”
+### 40. Edit shared_file in /backups
 
-352. `stat hard_link`
-      Check link count and metadata.
+```bash
+vi /backups/shared_file
+```
+
+Edits or creates `shared_file` in `/backups`.
+
+### 41. Create symlink imp_file to shared_file
+
+```bash
+ln -s /backups/shared_file /home/zubair/imp_file
+```
+
+Creates a symlink `imp_file` pointing to `shared_file`.
+
+### 42. Read through symlink
+
+```bash
+cat imp_file
+```
+
+Reads the contents of `shared_file` via the symlink.
+
+### 43. Symlink to a directory
+
+```bash
+ln -s /home/zubair/archiving_compression /home/zubair/Archiving_compression
+```
+
+Creates a symlink to a directory (case differs).
+
+### 44. Create hard link to shared_file
+
+```bash
+ln /backups/shared_file /home/zubair/hard_link
+```
+
+Creates a hard link to `shared_file` (must be same filesystem).
+
+### 45. Create hard link to Downloads/abc
+
+```bash
+ln /home/zubair/Downloads/abc /home/zubair/hard_link
+```
+
+Attempts to create a hard link to `Downloads/abc` (overwrites if allowed).
+
+### 46. Read via hard link
+
+```bash
+cat hard_link
+```
+
+Reads the contents via the hard link.
+
+### 47. Inode number for hard_link
+
+```bash
+ls -i hard_link
+```
+
+Shows inode number for the hard link.
+
+### 48. Inode number for Downloads/abc
+
+```bash
+ls -i Downloads/abc
+```
+
+Shows inode number for the original file (should match hard_link).
+
+### 49. Stats for the hard link
+
+```bash
+stat hard_link
+```
+
+Shows stats for the hard link.
+
+### 50. Remove one name; data persists via hard_link
+
+```bash
+rm /home/zubair/Downloads/abc
+```
+
+Removes one name; data persists via the hard link.
+
+### 51. Contents still accessible
+
+```bash
+cat hard_link
+```
+
+Contents are still accessible via the hard link.
+
+### 52. Recreate another hard link back in Downloads
+
+```bash
+ln /home/zubair/hard_link /home/zubair/Downloads/abc
+```
+
+Recreates a hard link in `Downloads`.
+
+### 53. Find all hard links to the same inode (system-wide)
+
+```bash
+find / -samefile hard_link
+```
+
+Finds all hard links to the same inode (may be slow).
+
+### 54. Restrict search to /home
+
+```bash
+find /home -samefile hard_link
+```
+
+Finds all hard links to the same inode within `/home`.
+
+### 55. Attempt hard link to a directory (not permitted)
+
+```bash
+ln /home/zubair/archiving_compression /home/zubair/arc
+```
+
+Attempts to create a hard link to a directory (generally not permitted).
+
+### 56. Check link count and metadata
+
+```bash
+stat hard_link
+```
+
+Checks link count and metadata for the hard link.
+
+---
+
+*End of Session 12 — 20 Jul 2025*
 
 

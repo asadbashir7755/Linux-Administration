@@ -1,207 +1,338 @@
-
 # 📅 Session 10 — 12 Jul 2025 • Session 1: RPM | Session 2: Archiving (Tar)
 
-235. `# Redhat Package Manager RPM`
-      Note: Comment; RPM is the low-level package manager.
+## 🖥️ Commands Learned
 
-236. `rpm -qa`
-      Query all installed RPM packages.
+### 1. Query all installed RPM packages
 
-237. `rpm -qa | wc -l`
-      Count installed packages.
+```bash
+rpm -qa
+```
 
-238. `rpm -qa | grep nload`
-      Check if nload is installed via RPM.
+Lists all installed RPM packages.
 
-239. `rpm -qa | wc -l`
-      Repeat count.
+### 2. Count installed packages
 
-240. `rpm -qa`
-      Repeat list.
+```bash
+rpm -qa | wc -l
+```
 
-241. `rpm -qa | grep words-3.0-39.el9.noarch`
-      Search for a specific version of “words.”
+Counts the number of installed RPM packages.
 
-242. `rpm -qa | grep words*`
-      Glob in grep pattern; equivalent to grep 'words\*' (note: regex vs shell glob).
+### 3. Check if nload is installed via RPM
 
-243. `rpm -qa | grep words`
-      Match any “words” package.
+```bash
+rpm -qa | grep nload
+```
 
-244. `rpm -qi words-3.0-39.el9.noarch`
-      Detailed info for the specific words package.
+Checks if `nload` is installed.
 
-245. `rpm -qi words`
-      Query info by name (if uniquely resolves).
+### 4. Search for a specific version of "words"
 
-246. `rpm -qi nload`
-      Package info for nload.
+```bash
+rpm -qa | grep words-3.0-39.el9.noarch
+```
 
-247. `ls`
-      List directory.
+Searches for a specific version of the `words` package.
 
-248. `rpm -ivh nload-0.7.4-23.el9.x86_64.rpm`
-      Install RPM from local file (i=install, v=verbose, h=hash).
-      Note: Use full and correct filename.
+### 5. Search for words packages (glob/regex)
 
-249. `rpm -qi nload`
-      Verify installation.
+```bash
+rpm -qa | grep words*
+```
 
-250. `ls`
-      List.
+Searches for packages matching `words*`.
 
-251. `rpm -Uvh nload-0.7.4-23.el9.x86_64.rpm`
-      Upgrade or install if newer (U=upgrade).
+### 6. Match any "words" package
 
-252. `rpm -evh nload-0.7.4-23.el9.x86_64`
-      Erase package (e=erase; v/h optional).
-      Note: Erase uses package name, not file.
+```bash
+rpm -qa | grep words
+```
 
-253. `rpm -qi nload`
-      Check if removed.
+Matches any installed package with "words" in its name.
 
-254. `cat /etc/redhat-release`
-      Show distribution release version.
+### 7. Detailed info for a specific words package
 
-255. `uname -a`
-      Kernel and system info.
+```bash
+rpm -qi words-3.0-39.el9.noarch
+```
 
-256. `rpm -e epel-release`
-      Remove EPEL release package.
+Shows detailed info for the specific `words` package.
 
-257. `rpm -e epel-next-release`
-      Remove EPEL next release (if installed).
+### 8. Query info by name
 
-258. `rpm -evh epel-release`
-      Erase with verbose/hash.
+```bash
+rpm -qi words
+```
 
-259. `rpm -ivh https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packag.../epel-release-9-10.el9.noarch.rpm`
-      Install RPM directly from URL.
-      Note: Ensure network access and SSL.
+Shows info for the `words` package (if uniquely resolves).
 
-260. `ls`
-      List.
+### 9. Package info for nload
 
-261. `mkdir archiving_compression`
-      Create working directory.
+```bash
+rpm -qi nload
+```
 
-262. `cd archiving_compression/`
-      Enter it.
+Shows info for the `nload` package.
 
-263. `ls`
-      List.
+### 10. List directory
 
-264. `cp /etc/passwd .`
-      Copy passwd into workspace.
+```bash
+ls
+```
 
-265. `ls`
-      List.
+Lists files in the current directory.
 
-266. `vi passwd`
-      View/edit file.
+### 11. Install RPM from local file
 
-267. `ls -lh`
-      List with human-readable sizes.
+```bash
+rpm -ivh nload-0.7.4-23.el9.x86_64.rpm
+```
 
-268. `vi passwd`
-      Edit again.
+Installs the RPM from a local file (`i=install`, `v=verbose`, `h=hash`).
 
-269. `ls -lh`
-      Verify.
+### 12. Upgrade or install if newer
 
-270. `vi passwd`
-      Edit again.
+```bash
+rpm -Uvh nload-0.7.4-23.el9.x86_64.rpm
+```
 
-271. `ls -lh`
-      Verify.
+Upgrades or installs the RPM if newer (`U=upgrade`).
 
-272. `cp passwd my_pass`
-      Make a copy.
+### 13. Erase package
 
-273. `cp passwd your_pass`
-      Make another copy.
+```bash
+rpm -evh nload-0.7.4-23.el9.x86_64
+```
 
-274. `ls`
-      List.
+Erases the package (`e=erase`).
 
-275. `ll`
-      Long list (alias).
+### 14. Check if removed
 
-276. `ls -l`
-      Long list.
+```bash
+rpm -qi nload
+```
 
-277. `ls -lh`
-      Long list human-readable.
+Checks if `nload` is removed.
 
-278. `mkdir data`
-      Create data dir.
+### 15. Show distribution release version
 
-279. `ls`
-      List.
+```bash
+cat /etc/redhat-release
+```
 
-280. `mv my_pass data`
-      Move file into data.
+Displays the distribution release version.
 
-281. `mv passwd data`
-      Move passwd into data.
+### 16. Kernel and system info
 
-282. `mv your_pass data`
-      Move the last copy.
+```bash
+uname -a
+```
 
-283. `ls`
-      List.
+Shows kernel and system information.
 
-284. `tree data/`
-      Show tree of data (files inside).
+### 17. Remove EPEL release package
 
-285. `ls`
-      List.
+```bash
+rpm -e epel-release
+```
 
-286. `mkdir data/abc`
-      Create subdirectory.
+Removes the EPEL release package.
 
-287. `ls`
-      List.
+### 18. Remove EPEL next release
 
-288. `tree data/`
-      View updated structure.
+```bash
+rpm -e epel-next-release
+```
 
-289. `tar -cvf archive.tar data`
-      Create tar archive of data (no compression).
+Removes the EPEL next release package (if installed).
 
-290. `ls`
-      List.
+### 19. Erase EPEL release with verbose/hash
 
-291. `ls -lh`
-      Check sizes.
+```bash
+rpm -evh epel-release
+```
 
-292. `du -hs data`
-      Disk usage summary for data.
+Erases EPEL release with verbose and hash output.
 
-293. `du -hs archive.tar`
-      Disk usage for tar file.
+### 20. Install RPM directly from URL
 
-294. `ls`
-      List.
+```bash
+rpm -ivh https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packag.../epel-release-9-10.el9.noarch.rpm
+```
 
-295. `rm -rf data`
-      Remove data dir recursively.
+Installs RPM directly from a URL.
 
-296. `ls`
-      List.
+### 21. Create working directory
 
-297. `tar -xvf archive.tar`
-      Extract archive back into data/.
+```bash
+mkdir archiving_compression
+```
 
-298. `ls`
-      List.
+Creates a working directory for archiving.
 
-299. `ls data/`
-      Inspect extracted directory.
+### 22. Enter working directory
 
-300. `ls data/ -lh`
-      Long list.
+```bash
+cd archiving_compression/
+```
 
-301. `history`
-      Show history.
+Changes into the working directory.
+
+### 23. Copy passwd into workspace
+
+```bash
+cp /etc/passwd .
+```
+
+Copies `/etc/passwd` into the current directory.
+
+### 24. View/edit file
+
+```bash
+vi passwd
+```
+
+Views or edits the `passwd` file.
+
+### 25. List with human-readable sizes
+
+```bash
+ls -lh
+```
+
+Lists files with human-readable sizes.
+
+### 26. Make a copy of passwd
+
+```bash
+cp passwd my_pass
+```
+
+Makes a copy named `my_pass`.
+
+### 27. Make another copy
+
+```bash
+cp passwd your_pass
+```
+
+Makes another copy named `your_pass`.
+
+### 28. Create data directory
+
+```bash
+mkdir data
+```
+
+Creates a directory named `data`.
+
+### 29. Move files into data
+
+```bash
+mv my_pass data
+mv passwd data
+mv your_pass data
+```
+
+Moves the files into the `data` directory.
+
+### 30. Show tree of data
+
+```bash
+tree data/
+```
+
+Shows the directory tree of `data`.
+
+### 31. Create subdirectory
+
+```bash
+mkdir data/abc
+```
+
+Creates a subdirectory `abc` inside `data`.
+
+### 32. View updated structure
+
+```bash
+tree data/
+```
+
+Shows the updated directory structure.
+
+### 33. Create tar archive of data
+
+```bash
+tar -cvf archive.tar data
+```
+
+Creates a tar archive of the `data` directory (no compression).
+
+### 34. Check sizes
+
+```bash
+ls -lh
+```
+
+Lists files with human-readable sizes.
+
+### 35. Disk usage summary for data
+
+```bash
+du -hs data
+```
+
+Shows disk usage summary for `data`.
+
+### 36. Disk usage for tar file
+
+```bash
+du -hs archive.tar
+```
+
+Shows disk usage for the tar file.
+
+### 37. Remove data directory recursively
+
+```bash
+rm -rf data
+```
+
+Removes the `data` directory and its contents.
+
+### 38. Extract archive back into data
+
+```bash
+tar -xvf archive.tar
+```
+
+Extracts the archive back into the `data` directory.
+
+### 39. Inspect extracted directory
+
+```bash
+ls data/
+```
+
+Lists files in the extracted `data` directory.
+
+### 40. Long list of extracted directory
+
+```bash
+ls data/ -lh
+```
+
+Lists files in `data` with human-readable sizes.
+
+### 41. Show history
+
+```bash
+history
+```
+
+Displays the command history.
+
+---
+
+*End of Session 10 — 12 Jul 2025*
 

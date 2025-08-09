@@ -1,107 +1,136 @@
 # 📅 Session 13 — 26 Jul 2025 • User Management (Part 1)
 
-355. `# /etc/passwd Users' info`
-      Note: Contains user accounts (name, UID, GID, home directory, shell).
+## 🖥️ Commands Learned
 
-356. `# /etc/shadow users' password`
-      Note: Has hashed passwords; root-readable only.
+### 1. Verify defaults file exists
 
-357. `# /etc/gshadow Group password`
-      Note: Group security file (root-only).
+```bash
+ls /etc/login.defs
+```
 
-358. `# /etc/group Group info`
-      Note: Group names and memberships.
+Checks if `/etc/login.defs` (user creation policies) exists.
 
-359. `# /var/log/secure User login log file`
-      Note: Authentication logs (distribution-dependent path).
+### 2. Show permissions/ownership of login.defs
 
-360. `ls /etc/login.defs`
-      Verify defaults file exists (user creation policies).
+```bash
+ls -ld /etc/login.defs
+```
 
-361. `ls -ld /etc/login.defs`
-      Show permissions/ownership of login.defs.
+Shows permissions and ownership for `/etc/login.defs`.
 
-362. `# /etc/login.defs this file contains new user defaults`
-      Note: Documents UID ranges, password policies, etc.
+### 3. View/edit user list
 
-363. `# /etc/skel/ contains required files and folders necessary for a user`
-      Note: Skeleton files copied to new user home directories.
+```bash
+vi /etc/passwd
+```
 
-364. `# /home/zubair User home directory`
-      Note: Example home directory.
+Views or edits the user list (read-only unless root).
 
-365. `# Types of user in Linux`
-      Note: Header for classification.
+### 4. View/edit groups
 
-366. `# 1 root -> Admin/Super/Power user`
-      Note: UID 0.
+```bash
+vi /etc/group
+```
 
-367. `# 2 zubair, umair, ahmed -> General User`
-      Note: Regular human users.
+Views or edits the group list.
 
-368. `# 3 apache, mysql, named -> System User`
-      Note: Service accounts.
+### 5. View shadow file
 
-369. `# 4 zubair, umair, umais -> sudo User`
-      Note: Regular users granted sudo privileges.
+```bash
+vi /etc/shadow
+```
 
-370. `# root UID 0`
-      Note: Confirms root’s UID.
+Views the shadow password file (root only).
 
-371. `# 0 < UID < 1000 = System Users`
-      Note: Typical RHEL/CentOS range for system users.
+### 6. View group shadow
 
-372. `# UID >= 1000 General Users`
-      Note: Human users typically start at 1000.
+```bash
+vi /etc/gshadow
+```
 
-373. `vi /etc/passwd`
-      View/edit user list (read-only unless root; caution advised).
+Views the group shadow file (root only).
 
-374. `vi /etc/group`
-      View/edit groups.
+### 7. Show authentication log tail
 
-375. `vi /etc/passwd`
-      Reopen passwd.
+```bash
+tail /var/log/secure
+```
 
-376. `vi /etc/group`
-      Reopen group.
+Shows the last lines of the authentication log.
 
-377. `vi /etc/shadow`
-      View shadow file (root only).
+### 8. Inspect user defaults
 
-378. `vi /etc/gshadow`
-      View group shadow (root only).
+```bash
+vi /etc/login.defs
+```
 
-379. `tail /var/log/secure`
-      Show authentication log tail (logins, sudo, ssh, etc.).
+Inspects user defaults (UID ranges, password expiration).
 
-380. `vi /etc/login.defs`
-      Inspect user defaults (UID ranges, password expiration).
+### 9. List skeleton directory
 
-381. `ls /etc/skel/`
-      List skeleton directory.
+```bash
+ls /etc/skel/
+```
 
-382. `ls -a /etc/skel/`
-      Include hidden files (e.g., `.bashrc`).
+Lists files in the skeleton directory.
 
-383. `ls -A /etc/skel/`
-      Like `-a` but omit `.` and `..`.
+### 10. Include hidden files in skeleton directory
 
-384. `ls -Al /etc/skel/`
-      Long list including hidden files.
+```bash
+ls -a /etc/skel/
+```
 
-385. `ls -Al /home/zubair/`
-      Long list home directory (including hidden files).
+Lists all files, including hidden, in `/etc/skel/`.
 
-386. `ls -Al /etc/skel/`
-      Re-list skeleton directory.
+### 11. Like -a but omit . and ..
 
-387. `vi /etc/skel/.bash_profile`
-      Inspect default shell profile.
+```bash
+ls -A /etc/skel/
+```
 
-388. `vi /etc/skel/.bashrc`
-      Inspect default shell rc file.
+Lists all except `.` and `..` in `/etc/skel/`.
 
-389. `vi /etc/skel/.bash_logout`
-      Inspect default logout script.
+### 12. Long list including hidden files
+
+```bash
+ls -Al /etc/skel/
+```
+
+Long list of all files, including hidden, in `/etc/skel/`.
+
+### 13. Long list home directory (including hidden files)
+
+```bash
+ls -Al /home/zubair/
+```
+
+Long list of all files, including hidden, in `/home/zubair/`.
+
+### 14. Inspect default shell profile
+
+```bash
+vi /etc/skel/.bash_profile
+```
+
+Views the default shell profile for new users.
+
+### 15. Inspect default shell rc file
+
+```bash
+vi /etc/skel/.bashrc
+```
+
+Views the default shell rc file for new users.
+
+### 16. Inspect default logout script
+
+```bash
+vi /etc/skel/.bash_logout
+```
+
+Views the default logout script for new users.
+
+---
+
+*End of Session 13 — 26 Jul 2025*
 
