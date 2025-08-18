@@ -319,7 +319,7 @@ Show permissions for file.
 
 > **Note:** Octal permissions use numbers (`0-7`) to represent combinations of read, write, and execute.
 
-![Linux Octal Permissions Table](assets/permissions2.png)
+![Linux Octal Permissions Table](/assets/permissions2.png)
 *Reference: Octal, binary, and symbolic permission mapping.*
 
 ```bash
