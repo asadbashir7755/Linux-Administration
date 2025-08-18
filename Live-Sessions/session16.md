@@ -111,10 +111,10 @@ Performs directory creation, ownership, and group changes.
 
 ### Understanding Permissions
 
-![Octal and Symbolic Permissions Table](assets/permissions1.jpg)
+![Octal and Symbolic Permissions Table](assets/permissions1.gif)
 *Octal, binary, and symbolic representation of Linux file permissions.*
 
-![Linux File Permissions Structure](assets/permissions2.jpg)
+![Linux File Permissions Structure](assets/permissions2.png)
 *How to read Linux file permissions: user, group, others.*
 
 - **r** = read, **w** = write, **x** = execute
