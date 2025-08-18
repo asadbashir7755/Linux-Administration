@@ -1,221 +1,686 @@
-# 📅 Session 16 — 10 & 17 Aug 2025 • Ownership, Permissions & Special Permissions
+# 📅 Session 16 — 17 Aug 2025 • Permissions (Symbolic, Octal, Special)
 
-## 🖥️ Ownership & Group Ownership
+## 🛡️ General Permissions (Symbolic Method)
 
-### 1. View all system groups
+> **Note:** Symbolic permissions use letters (`u`, `g`, `o`, `a`) and operators (`+`, `-`, `=`) to set file modes.
+
+![Linux Symbolic Permissions Table](/assets/permissions1.gif)
+*Reference: Symbolic and octal permission mapping.*
 
 ```bash
-cat /etc/group
+# 4 2 1
+# 1 0 1  r - x 5
+# Symbolic Method
+# Permission/Mode
 ```
-
-Displays all system groups.
-
-### 2. Create a new group
-
 ```bash
-groupadd admins
+chmod u+x file
 ```
-
-Creates a group named `admins`.
-
-### 3. Manual for groupmod
+Add execute for user.
 
 ```bash
-man groupmod
-```
-
-Shows the manual for the `groupmod` command.
-
-### 4. Show last entries in group file
-
-```bash
-tail /etc/group
-```
-
-Displays the last lines of the group file.
-
-### 5. Rename groups
-
-```bash
-groupmod -n adm admins
-groupmod -n admn admins
-```
-
-Renames `admins` to `adm`, then to `admn`.
-
-### 6. Show last entries in passwd file
-
-```bash
-tail /etc/passwd
-```
-
-Displays the last lines of the passwd file.
-
-### 7. Show UID and GID for user
-
-```bash
-id arshad
-```
-
-Displays UID and GID for `arshad`.
-
-### 8. Add and remove user from groups
-
-```bash
-usermod -aG admn arshad
-gpasswd -a arshad qa
-gpasswd -d arshad admn
-```
-
-Adds/removes `arshad` to/from groups.
-
-### 9. Delete a group
-
-```bash
-groupdel admn
-```
-
-Deletes the `admn` group.
-
-### 10. Directory and Ownership Operations
-
-```bash
-ls
-mkdir ownership
-cd ownership/
-mkdir -p folder1/{fol_1,fol_2,fol_3,fol_4,fol_5,fol_6,fol_7,fol_8,fol_9,fol_10}
-mkdir -p folder1/{fol_1,fol_2}/nested
-tree
-rm -r folder1/fol_10
-rm -r folder1/fol_1
-tree
 ll
-chown arshad folder1
-chgrp qa folder1
-chown -R arshad folder1/
-namei -l folder1/fol_1/nested/
-chown zahid:stag folder1/ -R
-chown root.qa folder1/
-touch file
 ```
-
-Performs directory creation, ownership, and group changes.
-
-### 11. General Ownership Note
-
-> By default, the ownership and group ownership of any file or folder is of the user who creates it.
-
----
-
-## 🛡️ Linux File Permissions
-
-### Understanding Permissions
-
-![Octal and Symbolic Permissions Table](/assets/permissions1.gif)
-*Octal, binary, and symbolic representation of Linux file permissions.*
-
-![Linux File Permissions Structure](/assets/permissions2.png)
-*How to read Linux file permissions: user, group, others.*
-
-- **r** = read, **w** = write, **x** = execute
-- Permissions are set for user (owner), group, and others.
-- Each permission can be represented in binary and octal.
-
----
-
-### 12. Symbolic Permissions (chmod)
-
-#### Symbolic Method Examples
+Long list directory contents.
 
 ```bash
-chmod u+x file
 chmod u-w file
-chmod u+w,g+x file
-chmod u+w,g+x,o+x file
-chmod u-w,g+w,o-r file
-chmod u=w,g=r,o= file
-chmod u=,g=,o= file
-chmod ug=rw,o=r file
-chmod ugo=r file
-chmod ugo+x file
-chmod u+x file
-chmod u-w file
-chmod ogu+w file
-chmod og-w file
-chmod ogu-w file
-chmod u+w-x file
-chmod o-rx file
 ```
+Remove write for user.
 
-Use `ls -ld file` after each command to verify changes.
+```bash
+ls -ld file
+```
+Show permissions for file.
 
-#### Example: View permissions of sensitive files
+```bash
+chmod u+w,g+x file
+```
+Add write for user, execute for group.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u+w,g+x,o+x file
+```
+Add write for user, execute for group and others.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u-w,g+w,o-r file
+```
+Remove write for user, add write for group, remove read for others.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u=w,g=r,o= file
+```
+Set user to write only, group to read only, others to none.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u=,g=,o= file
+```
+Remove all permissions.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
 
 ```bash
 ls -ld /etc/shadow
+```
+Check permissions of sensitive file.
+
+```bash
+chmod ug=rw,o=r file
+```
+User/group read-write, others read.
+
+```bash
+ls -ld /etc/shadow
+```
+Check permissions of sensitive file.
+
+```bash
 ls -ld file
 ```
+Show permissions for file.
+
+```bash
+chmod ugo=r file
+```
+All read only.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod ugo+x file
+```
+All execute only.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u+x file
+```
+User execute only.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u-w file
+```
+Remove write for user.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod ogu+w file
+```
+Add write for all.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod og-w file
+```
+Remove write for group and others.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod ogu-w file
+```
+Remove write for all.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u+w-x file
+```
+Add write, remove execute for user.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod o-rx file
+```
+Remove read and execute for others.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chown zubair file
+```
+Change owner to zubair.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+./file
+```
+Execute file (if permissions allow).
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+./file
+```
+Execute file (if permissions allow).
+
+```bash
+chmod u+x file
+```
+Add execute for user.
+
+```bash
+./file
+```
+Execute file (if permissions allow).
+
+```bash
+chmod u-x file
+```
+Remove execute for user.
+
+```bash
+./file
+```
+Execute file (if permissions allow).
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+vi file
+```
+Edit file.
+
+```bash
+cat file
+```
+View file content.
+
+```bash
+chmod u-w file
+```
+Remove write for user.
+
+```bash
+cat file
+```
+View file content.
+
+```bash
+vi file
+```
+Edit file.
+
+```bash
+cat file
+```
+View file content.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod u-r file
+```
+Remove read for user.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+./file
+```
+Execute file (if permissions allow).
+
+```bash
+cat file
+```
+View file content.
+
+```bash
+vi file
+```
+Edit file.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
 
 ---
 
-### 13. Numeric (Octal) Permissions
+## 🛡️ General Permissions (Octal Method)
 
-- **4** = read, **2** = write, **1** = execute
-- Example: `chmod 755 file` sets `rwxr-xr-x`
+> **Note:** Octal permissions use numbers (`0-7`) to represent combinations of read, write, and execute.
 
-#### Examples
+![Linux Octal Permissions Table](assets/permissions2.png)
+*Reference: Octal, binary, and symbolic permission mapping.*
 
 ```bash
-chmod 4750 file   # SUID + rwxr-x---
-chmod 0750 file   # rwxr-x---
-chmod 4650 file   # SUID + rwxr-x---
-chmod 2750 file   # SGID + rwxr-s---
-chmod 1750 file   # Sticky bit + rwxr-x--T
-chmod 2770 folder1/ # SGID on directory
-chmod 3770 folder1/ # SGID + Sticky bit
+# Octal Method
+# 4 2 1
+# 0 1 1
+# 1 0 1
+# 000
+# 001
+# 010
+# 011
+# 100
+# 101
+# 110
+# 111
+#000 ---
+#001 --x
+#010 -w-
+#011 -wx
+#100 r--
+#101 r-x
+#110 rw-
+#111 rwx
 ```
+```bash
+ll
+```
+Long list directory contents.
 
-Use `ls -ld file` or `ls -ld folder1/` to verify.
+```bash
+chmod 000 file
+```
+No permissions for anyone.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 754 file
+```
+User: rwx, Group: rx, Others: r.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 777 file
+```
+All: rwx.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+mkdir my_fol
+```
+Create directory.
+
+```bash
+chmod u+wr folder1/
+```
+Add write/read for user on folder1.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+mkdir folder1/my_fol
+```
+Create subdirectory.
+
+```bash
+ll folder1/
+```
+Long list folder1.
+
+```bash
+chmod 750 file
+```
+User: rwx, Group: rx, Others: none.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+ll folder1/
+```
+Long list folder1.
+
+```bash
+mkdir -m 540 folder1/custom
+```
+Create dir with specific permissions.
+
+```bash
+ll folder1/
+```
+Long list folder1.
 
 ---
 
 ## ⭐ Special Permissions
 
-- **SUID (Set User ID):** `chmod u+s file` or octal `4xxx`
-- **SGID (Set Group ID):** `chmod g+s file` or octal `2xxx`
-- **Sticky Bit:** `chmod +t file` or octal `1xxx`
+> **Note:** Special permissions (SUID, SGID, Sticky Bit) provide advanced control, often for executables or shared directories.
 
-#### Examples
+- **SUID (Set User ID):** Allows users to run an executable with the file owner's privileges.
+- **SGID (Set Group ID):** Files: run with group privileges; Directories: new files inherit group.
+- **Sticky Bit:** Only file owner/root can delete files in the directory.
+
+```bash
+# Special Permission reside on execute position
+# User Special Permission - Set User ID - SUID
+# rws = rwxs
+# rwS = rw-s
+# Group Special permission- set Group ID - SGID
+# rws = rwxs
+# rwS = rw-s
+# Other Special Permission- Sticky Bit
+# rwt = rwxt
+# rwT = rw-t
+```
+```bash
+whereis passwd
+```
+Locate passwd binary.
+
+```bash
+ls -ld /usr/bin/passwd
+```
+Check SUID on passwd.
+
+```bash
+passwd
+```
+Change password (uses SUID).
+
+```bash
+ls
+```
+List directory contents.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 4750 file
+```
+SUID + rwxr-x---.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod 0750 file
+```
+rwxr-x---.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod 4650 file
+```
+SUID + rwxr-x---.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod 2750 file
+```
+SGID + rwxr-s---.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+chmod 2750 file
+```
+SGID + rwxr-s---.
+
+```bash
+ls -ld file
+```
+Show permissions for file.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 1750 file
+```
+Sticky bit + rwxr-x--T.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chgrp zubair file
+```
+Change group to zubair.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 2750 file
+```
+SGID + rwxr-s---.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 2750 folder1/
+```
+SGID on directory.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 2770 folder1/
+```
+SGID + rwxrws---.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+grep -r arshad /etc/passwd
+```
+Search for user arshad.
+
+```bash
+grep -r arshad /etc/group
+```
+Search for group arshad.
+
+```bash
+su arshad
+```
+Switch to user arshad.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod 3770 folder1/
+```
+SGID + Sticky bit.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+su arshad
+```
+Switch to user arshad.
+
+```bash
+ll
+```
+Long list directory contents.
 
 ```bash
 chmod u+s folder1/
+```
+Set SUID on directory.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
 chmod u+s,g-s,o-t folder1/
+```
+Set/clear special bits.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
+chmod u+rwxs,gwrxs,o+rwxt folder1/
+```
+Set all special bits.
+
+```bash
 chmod u+rwxs,g+wrxs,o+rwxt folder1/
+```
+Set all special bits.
+
+```bash
+ll
+```
+Long list directory contents.
+
+```bash
 chmod a-x folder1/
 ```
-
-Use `ls -ld folder1/` to check special bits.
-
----
-
-## 🔎 Useful Commands for Permissions
+Remove execute for all.
 
 ```bash
-namei -l folder1/fol_1/nested/
+ll
+```
+Long list directory contents.
+
+```bash
 ls -l /etc/shadow
+```
+Check permissions of shadow file.
+
+```bash
 ls -l /etc/passwd
+```
+Check permissions of passwd file.
+
+```bash
 ls -l /usr/bin/passwd
 ```
+Check permissions of passwd binary.
 
 ---
 
-## 📝 General Permissions Practice
-
-```bash
-su zubair
-history
-```
-
----
-
-*End of Session 16 — 10 & 17 Aug 2025*
+*End of Session 16 — 17 Aug 2025*
