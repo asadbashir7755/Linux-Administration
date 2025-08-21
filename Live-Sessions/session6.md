@@ -192,7 +192,31 @@ Displays memory and swap usage.
 free -h
 ```
 
-Displays memory and swap usage in human-readable format.
+Displays memory info in a human-readable format.
+
+### 24a. Show disk usage for all items in current directory
+
+```bash
+du -sh *
+```
+
+Displays the size of each file and directory in the current location in a summarized, human-readable format.
+
+### 24b. Show total disk usage across all filesystems
+
+```bash
+df --total
+```
+
+Shows disk usage for all filesystems and adds a total line at the end.
+
+### 24c. Show number of processing units
+
+```bash
+nproc
+```
+
+Displays the number of available CPU processing units (cores/threads).
 
 ### 25. Interactive process viewer
 

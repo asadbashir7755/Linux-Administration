@@ -164,4 +164,25 @@ ls -l
 ll
 ```
 
-Lists files with details, including hidden ones.
+### 21. Show Directory Tree Recursively (Alternative to `tree`)
+
+```bash
+ls -R dir
+```
+Recursively lists all files and directories under `dir`.  
+**Tip:** Use this if the `tree` command is not installed.
+
+### 22. Add a Permanent Alias for `ll`
+
+```bash
+echo "alias ll='ls -l --color=auto'" >> ~/.bashrc
+```
+Adds an alias so you can use `ll` for a long, colorized listing.  
+**Note:** Reload your shell or run `source ~/.bashrc` for the alias to take effect.
+
+### 23. List Only Directories in `ls` Output
+
+```bash
+ls -l | grep '^d'
+```
+Filters the output of `ls -l` to show only directories (lines starting with `d`).

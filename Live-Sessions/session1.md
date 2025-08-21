@@ -163,3 +163,55 @@ ls -Alv
 * `-a` → show hidden files
 * `-A` → almost all (exclude `.` and `..`)
 * `-v` → natural sort for names
+
+### 🆕 Additional History & Environment Commands
+
+#### 1. Unset the history file
+
+```bash
+unset HISTFILE
+```
+Disables writing command history to the history file for the current session.
+
+#### 2. Set the history file
+
+```bash
+set HISTFILE
+```
+Restores or sets the history file variable (typically `$HISTFILE`).
+
+#### 3. Disable command history temporarily
+
+```bash
+set +o history
+```
+Turns off command history recording for the current shell.
+
+#### 4. Enable command history
+
+```bash
+set -o history
+```
+Turns on command history recording for the current shell.
+
+#### 5. Clear the command history
+
+```bash
+history -c
+```
+Clears the current shell's history list.
+
+#### 6. Set history timestamp format
+
+```bash
+export HISTTIMEOUT="%F %T"
+```
+Sets the format for timestamps in the history file (date and time).
+
+#### 7. List directory details (long format)
+
+```bash
+ls -ld
+```
+Shows detailed information about the current directory itself (not its contents).
+
