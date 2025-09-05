@@ -263,4 +263,16 @@ Show command history.
 
 ---
 
+```bash
+kill <PID>
+```
+Gracefully kill a process by PID. Allows the process to perform cleanup (close files, release resources) before exiting.
+
+```bash
+kill -9 <PID>
+```
+Forcefully kill a process by PID. Does **not** allow cleanup; the process is terminated immediately. Use with caution.
+
+> **Cleanup** means the process can finish its shutdown routines, save data, and release resources before exiting. `kill -9` skips this and may cause data loss or resource leaks.
+
 # End of Session 17
