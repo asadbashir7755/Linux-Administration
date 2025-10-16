@@ -139,7 +139,5 @@ drop user 'ztb_user'@'localhost';
 exit
 ```
 Drop users when no longer needed.
-
 ---
-
 # End of Session 25
