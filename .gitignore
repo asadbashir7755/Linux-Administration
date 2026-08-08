@@ -1,0 +1,52 @@
+# Environment / secrets — never commit real values
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pem
+*.key
+*_accessKeys.csv
+credentials
+.vault_pass
+
+# Dependencies
+node_modules/
+**/node_modules/
+vendor/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Build output
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+
+# Ansible
+*.retry
+ansible.log
+ansible_log
+
+# Logs / runtime
+*.log
+nohup.out
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

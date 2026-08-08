@@ -1,68 +1,87 @@
-# Linux System Administration 📘
+# Linux System Administration
 
-This repository contains structured **Linux Administration sessions** with step-by-step commands, explanations, and session-wise interview questions. It is designed to help learners, system administrators, and aspiring DevOps engineers.
+Eighteen sessions of Linux administration written up as I worked through them:
+commands, what they do, and session by session interview questions. Also includes
+shell scripting, networking and storage practice that used to live in a separate
+repo.
 
----
+This is the base everything else in my DevOps work sits on. If you cannot debug a
+service on one box, running a thousand of them is not going to go well.
 
-## 📂 Repository Structure
+Portfolio: [committodeploy.dev](https://committodeploy.dev)
+
+## Layout
 
 ```
-linux-system-administration/
-├── Readme.md               # Main project description and index
-├── assets/                 # Images, diagrams, or gifs for documentation
-├── Interview Questions/    # Session-wise interview questions
-└── Live-Sessions/          # Session-wise commands & notes
+live-sessions/        18 sessions with commands and explanations
+interview-questions/  questions per session
+shell-scripting/      bash: conditionals, loops, functions, cron
+networking/           commands, monitoring tools, reading htop
+storage-and-lvm/      LVM, fdisk, disk management
+resources/            reference PDFs
+assets/               diagrams
 ```
 
----
+## Sessions
 
-## 📚 Live Sessions
+| # | Topic |
+|---|---|
+| 01 | [Linux commands for regular system operations](live-sessions/01%20Linux%20commands%20for%20regular%20system%20operations/) |
+| 02 | [Editors, nano and vim](live-sessions/02%20Editors%28nano%2Cvim%29/) |
+| 03 | [Installing packages](live-sessions/03%20installation%20of%20packages%20in%20linux/) |
+| 04 | [Data compression](live-sessions/04%20Data%20compression/) |
+| 05 | [Soft and hard links](live-sessions/05%20soft%20and%20hard%20links%20in%20linux/) |
+| 06 | [Managing user accounts and groups](live-sessions/06%20Managing%20user%20account%20and%20groups/) |
+| 07 | [Permissions](live-sessions/07%20All%20Permissions%20in%20linux/) |
+| 08 | [Process management](live-sessions/08%20process%20management/) |
+| 09 | [Aliases](live-sessions/09%20aliases/) |
+| 10 | [systemd targets](live-sessions/10%20systemd%20Targets/) |
+| 11 | [VNC server and viewer](live-sessions/11%20VNC%20server%2CVNC%20Viewer/) |
+| 12 | [NFS server](live-sessions/12%20NFS%20SEVER/) |
+| 13 | [Remote data management](live-sessions/13%20RemoteDataManagment/) |
+| 14 | [vsFTPd](live-sessions/14%20vsFTPD%20service/) |
+| 15 | [LAMP stack](live-sessions/15%20LAMP%20STACK/) |
+| 16 | [Host based firewall with firewalld](live-sessions/16%20Manage%20Host%20Based%20Firewalld%28FirewallD%29/) |
+| 17 | [System recovery](live-sessions/17%20System%20recovery/) |
+| 18 | [Password protected GRUB](live-sessions/18%20Passwod%20protected%20Grub/) |
 
-Here are all sessions with commands and explanations:
+## Shell scripting
 
-1. [Linux commands for regular system operations](Live-Sessions/1%20Linux%20commands%20for%20regular%20system%20operations/)
-2. [Editors (nano, vim)](Live-Sessions/2%20Editors%28nano,vim%29/)
-3. [Installation of packages in Linux](Live-Sessions/3%20installation%20of%20packages%20in%20linux/)
+Built up over three days in `shell-scripting/`.
 
-   * [Session 8–9](Live-Sessions/3%20installation%20of%20packages%20in%20linux/session8-9.md)
-   * [Session 10](Live-Sessions/3%20installation%20of%20packages%20in%20linux/session10.md)
-4. [Data compression](Live-Sessions/4%20Data%20compression/session11.md)
-5. [Soft and hard links in Linux](Live-Sessions/5%20soft%20and%20hard%20links%20in%20linux/)
-6. [Managing user accounts and groups](Live-Sessions/6%20Managing%20user%20account%20and%20groups/)
+| Day | Covers |
+|---|---|
+| Day 1 | Variables, input, if and else, for, while and until loops, a server reachability check |
+| Day 2 | Functions, positional arguments, exit statuses, special variables, a root privilege check |
+| Day 3 | Scheduling with cron |
 
-   * [Session 13](Live-Sessions/6%20Managing%20user%20account%20and%20groups/session13.md)
-   * [Session 14](Live-Sessions/6%20Managing%20user%20account%20and%20groups/session14.md)
-7. [All Permissions in Linux](Live-Sessions/7%20All%20Permissions%20in%20linux/)
+```bash
+cd shell-scripting/Day1/loops
+chmod +x checkserver.sh
+./checkserver.sh
+```
 
-   * [Session 15](Live-Sessions/7%20All%20Permissions%20in%20linux/session15.md)
-   * [Session 16](Live-Sessions/7%20All%20Permissions%20in%20linux/session16.md)
+## Networking and storage
 
----
+`networking/` covers the diagnostic commands and monitoring tools, including how
+to actually read htop: priority, nice values, and the difference between virtual,
+resident and shared memory.
 
-## 🎯 Interview Questions
+`storage-and-lvm/` covers partitioning with fdisk and LVM: physical volumes,
+volume groups, logical volumes, and resizing a filesystem without taking the
+system down.
 
-Session-wise interview questions to help you prepare:
+## Interview questions
 
-* [Session 1 Questions](Interview%20Questions/session1%20Questions.md)
-* [Session 2 Questions](Interview%20Questions/session2%20Questions.md)
-* [Session 4 Questions](Interview%20Questions/session4%20Questions.md)
-* [Session 6 Questions](Interview%20Questions/session6%20Questions.md)
-* [Session 8–9 Questions](Interview%20Questions/session8-9%20Questions.md)
-* [Session 11 Questions](Interview%20Questions/session11%20Questions.md)
-* [Session 12–13–14 Questions](Interview%20Questions/session12-13-14%20Questions.md)
-* [Session 15–16 Questions](Interview%20Questions/session15-16%20Questions.md)
+`interview-questions/` has questions covering sessions 1 to 16. Good for checking
+whether you actually took a session in rather than just followed along.
 
----
+## Environment
 
-## 🛠 How to Contribute
+Written against both RHEL family and Debian family systems. Where a command
+differs between them, like dnf against apt or firewalld against ufw, the session
+notes say so.
 
-We welcome contributions from the community! 🙌
+## Tech stack
 
-* To contribute, please read [CONTRIBUTING.md](CONTRIBUTING.md).
-* You can add new sessions, commands, interview questions, or improve existing documentation.
-
----
-
-## 🎉 Acknowledgements
-
-This repository is built to help students, Linux users, and DevOps enthusiasts learn system administration in a structured way. Thanks to all contributors who make this project better! 🚀
+Linux, Bash, systemd, firewalld, LVM, NFS, vsFTPd, Apache, MySQL, VNC, cron
